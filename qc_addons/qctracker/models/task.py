@@ -16,3 +16,5 @@ class Task(models.Model):
     start_date = fields.Date(string='Start Date')
     expected_end_date = fields.Date(string='Expected End Date')
     end_date = fields.Date(string='End Date')
+    # ajout du champ pour gestion barre progression
+    # ajout priorités

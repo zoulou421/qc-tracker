@@ -2,8 +2,8 @@
 
 from . import employee
 from . import department
-from . import employeerating
+from . import employee_rating
 from . import project
-from . import projectdelivery
+from . import project_delivery
 from . import task
 from . import subtask

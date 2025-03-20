@@ -49,3 +49,10 @@ package.json
 /man/
 /share/
 /src/
+/.github/
+/odootuto_venv/
+/odoo/
+/doc/
+/debian/
+/addons/
+/setup/
