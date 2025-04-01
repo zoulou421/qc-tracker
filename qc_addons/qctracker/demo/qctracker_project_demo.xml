@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="project_product_launch" model="qctracker.project">
+        <field name="name">Product X Launch QC</field>
+        <field name="department_id" ref="department_qa"/>
+        <field name="manager_id" ref="employee_john"/>
+        <field name="start_date" eval="(DateTime.now() + timedelta(days=-7)).strftime('%Y-%m-%d')"/>
+        <field name="end_date" eval="(DateTime.now() + timedelta(days=14)).strftime('%Y-%m-%d')"/>
+        <field name="priority">high</field>
+        <field name="employee_ids" eval="[(6, 0, [ref('employee_john'), ref('employee_sarah')])]"/>
+    </record>
+
+    <record id="project_process_improvement" model="qctracker.project">
+        <field name="name">Manufacturing Process Improvement</field>
+        <field name="department_id" ref="department_qc"/>
+        <field name="manager_id" ref="employee_john"/>
+        <field name="start_date" eval="(DateTime.now() + timedelta(days=-3)).strftime('%Y-%m-%d')"/>
+        <field name="end_date" eval="(DateTime.now() + timedelta(days=21)).strftime('%Y-%m-%d')"/>
+        <field name="priority">medium</field>
+        <field name="employee_ids" eval="[(6, 0, [ref('employee_mike')])]"/>
+    </record>
+</odoo>

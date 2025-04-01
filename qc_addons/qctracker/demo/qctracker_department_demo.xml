@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="department_qa" model="qctracker.department">
+        <field name="name">Quality Assurance</field>
+        <field name="email_alias">qa</field>
+    </record>
+
+    <record id="department_qc" model="qctracker.department">
+        <field name="name">Quality Control</field>
+        <field name="email_alias">qc</field>
+    </record>
+
+    <record id="department_rd" model="qctracker.department">
+        <field name="name">Research &amp; Development</field>
+        <field name="email_alias">rnd</field>
+    </record>
+</odoo>

@@ -1,0 +1,84 @@
+/* Dashboard general styles */
+.o_dashboard {
+    padding: 20px;
+}
+
+.o_dashboard_card {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.o_dashboard_card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Card images */
+.dashboard-icon {
+    width: 60px;
+    height: 60px;
+    margin-bottom: 15px;
+    transition: transform 0.3s ease;
+}
+
+.o_dashboard_card:hover .dashboard-icon {
+    transform: scale(1.1);
+}
+
+/* Animations for cards */
+.animated {
+    animation-duration: 1s;
+    animation-fill-mode: both;
+}
+
+.fadeInUp {
+    animation-name: fadeInUp;
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.delay-1s {
+    animation-delay: 1s;
+}
+
+.delay-2s {
+    animation-delay: 2s;
+}
+
+.delay-3s {
+    animation-delay: 3s;
+}
+
+/* Progress bar customization */
+.progress {
+    background-color: #f1f1f1;
+    height: 30px;
+}
+
+.progress-bar {
+    height: 30px;
+    line-height: 30px;
+    font-size: 14px;
+    text-align: center;
+}
+
+/* Chart container */
+.chart-container {
+    position: relative;
+    width: 100%;
+    height: 250px;
+}
+
+.card-header h3 {
+    font-size: 20px;
+    font-weight: 600;
+    color: #333;
+}

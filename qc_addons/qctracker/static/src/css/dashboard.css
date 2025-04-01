@@ -1,0 +1,21 @@
+.o_dashboard_card {
+    display: flex;
+    justify-content: space-around;
+    padding: 20px;
+    background-color: #f8f9fa;
+    border-radius: 5px;
+    margin-bottom: 20px;
+}
+.o_dashboard_indicator {
+    text-align: center;
+    padding: 10px;
+}
+.o_dashboard_number {
+    font-size: 2em;
+    font-weight: bold;
+    color: #007bff;
+}
+.o_dashboard_label {
+    font-size: 1em;
+    color: #6c757d;
+}

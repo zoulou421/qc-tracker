@@ -1,0 +1,84 @@
+<odoo>
+    <!-- Tree View for Project Deliveries -->
+    <record id="view_qctracker_projectdelivery_tree" model="ir.ui.view">
+        <field name="name">qctracker.projectdelivery.tree</field>
+        <field name="model">qctracker.projectdelivery</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="project_id"/>
+                <field name="manager_id"/>
+                <field name="on_time"/>
+                <field name="delivery_date"/>
+            </tree>
+        </field>
+    </record>
+
+    <!-- Form View for Project Deliveries -->
+    <record id="view_qctracker_projectdelivery_form" model="ir.ui.view">
+        <field name="name">qctracker.projectdelivery.form</field>
+        <field name="model">qctracker.projectdelivery</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>
+                        <field name="project_id"/>
+                        <field name="manager_id"/>
+                        <field name="on_time"/>
+                        <field name="comments"/>
+                        <field name="delivery_date"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <!-- Kanban View for Project Deliveries -->
+    <record id="view_qctracker_projectdelivery_kanban" model="ir.ui.view">
+        <field name="name">qctracker.projectdelivery.kanban</field>
+        <field name="model">qctracker.projectdelivery</field>
+        <field name="arch" type="xml">
+            <kanban>
+                <field name="project_id"/>
+                <field name="manager_id"/>
+                <field name="on_time"/>
+                <field name="delivery_date"/>
+                <templates>
+                    <t t-name="kanban-box">
+                        <div class="o_kanban_record">
+                            <strong><field name="project_id"/></strong>
+                            <div><field name="manager_id"/></div>
+                            <div><field name="on_time"/></div>
+                            <div><field name="delivery_date"/></div>
+                        </div>
+                    </t>
+                </templates>
+            </kanban>
+        </field>
+    </record>
+
+    <!-- Graph View for Project Deliveries (Visualizing On-time Deliveries) -->
+    <!--record id="view_qctracker_projectdelivery_graph" model="ir.ui.view">
+        <field name="name">qctracker.projectdelivery.graph</field>
+        <field name="model">qctracker.projectdelivery</field>
+        <field name="arch" type="xml">
+            <graph>
+                <field name="on_time" type="measure"/>
+                <field name="delivery_date" type="dimension"/>
+                <field name="manager_id" type="dimension"/>
+            </graph>
+        </field>
+    </record-->
+
+    <!-- Pivot View for Project Deliveries (Detailed Analysis of Deliveries by Manager) -->
+    <record id="view_qctracker_projectdelivery_pivot" model="ir.ui.view">
+        <field name="name">qctracker.projectdelivery.pivot</field>
+        <field name="model">qctracker.projectdelivery</field>
+        <field name="arch" type="xml">
+            <pivot>
+                <field name="manager_id"/>
+                <field name="on_time"/>
+                <field name="delivery_date"/>
+            </pivot>
+        </field>
+    </record>
+</odoo>

@@ -1,9 +1,13 @@
 # -*- coding: utf-8 -*-
 
-from . import employee
-from . import department
-from . import employee_rating
-from . import project
-from . import project_delivery
-from . import task
-from . import subtask
+from . import qc_tracker_employee
+from . import qc_tracker_department
+from . import qc_tracker_employeeRating
+from . import qc_tracker_project
+from . import qc_tracker_project_delivery
+from . import qc_tracker_task
+from . import qc_tracker_subTask
+from . import qc_tracker_skill
+from . import qc_tracker_skill_rating
+from .import qc_tracker_dashboard
+

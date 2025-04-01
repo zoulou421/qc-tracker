@@ -1,0 +1,94 @@
+<odoo>
+    <!-- Vue Liste (Tree) pour les sous-tâches -->
+    <record id="view_qctracker_subtask_tree" model="ir.ui.view">
+        <field name="name">qctracker.subtask.tree</field>
+        <field name="model">qctracker.subtask</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="name"/>
+                <field name="task_id"/>
+                <field name="employee_id"/>
+                <field name="start_date"/>
+                <field name="end_date"/>
+                <field name="status"/>
+            </tree>
+        </field>
+    </record>
+
+    <!-- Vue Formulaire (Form) pour les sous-tâches avec animations -->
+    <record id="view_qctracker_subtask_form" model="ir.ui.view">
+        <field name="name">qctracker.subtask.form</field>
+        <field name="model">qctracker.subtask</field>
+        <field name="arch" type="xml">
+            <form string="Subtask Details" class="o_form_sheet o_form_sheet_width_8">
+                <sheet>
+                    <group>
+                        <h2><strong>Subtask Information</strong></h2>
+                        <div class="oe_kanban_details animated fadeIn">
+                            <field name="name" class="oe_form_field"/>
+                            <field name="task_id" class="oe_form_field"/>
+                            <field name="description" class="oe_form_field"/>
+                            <field name="employee_id" class="oe_form_field"/>
+                            <field name="start_date" class="oe_form_field"/>
+                            <field name="end_date" class="oe_form_field"/>
+                            <field name="status" class="oe_form_field"/>
+                        </div>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <!-- Vue Kanban pour les sous-tâches avec animations -->
+    <record id="view_qctracker_subtask_kanban" model="ir.ui.view">
+        <field name="name">qctracker.subtask.kanban</field>
+        <field name="model">qctracker.subtask</field>
+        <field name="arch" type="xml">
+            <kanban class="o_kanban_cards o_kanban_stretched o_kanban_animated">
+                <field name="name"/>
+                <field name="status"/>
+                <field name="employee_id"/>
+                <templates>
+                    <t t-name="kanban-box">
+                        <div class="o_kanban_record oe_kanban_record_shadow o_kanban_record_hover animated fadeIn">
+                            <div class="o_kanban_record_header">
+                                <strong class="oe_kanban_record_name"><field name="name"/></strong>
+                            </div>
+                            <div class="o_kanban_record_body">
+                                <div>Status: <field name="status"/></div>
+                                <div>Assigned to: <field name="employee_id"/></div>
+                            </div>
+                        </div>
+                    </t>
+                </templates>
+            </kanban>
+        </field>
+    </record>
+
+    <!-- Vue Graph pour les sous-tâches (Visualisation des sous-tâches par statut) -->
+    <!--record id="view_qctracker_subtask_graph" model="ir.ui.view">
+        <field name="name">qctracker.subtask.graph</field>
+        <field name="model">qctracker.subtask</field>
+        <field name="arch" type="xml">
+            <graph>
+                <field name="status" type="dimension"/>
+                <field name="name" type="measure"/>
+            </graph>
+        </field>
+    </record-->
+
+    <!-- Vue Pivot pour les sous-tâches (Analyse des sous-tâches par employé et statut) -->
+    <record id="view_qctracker_subtask_pivot" model="ir.ui.view">
+        <field name="name">qctracker.subtask.pivot</field>
+        <field name="model">qctracker.subtask</field>
+        <field name="arch" type="xml">
+            <pivot>
+                <field name="employee_id"/>
+                <field name="status"/>
+                <field name="task_id"/>
+                <field name="start_date"/>
+                <field name="end_date"/>
+            </pivot>
+        </field>
+    </record>
+</odoo>

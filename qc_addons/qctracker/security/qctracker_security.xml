@@ -1,0 +1,163 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- Category for QC Groups -->
+    <record id="module_qc_tracker" model="ir.module.category">
+        <field name="name">QC Tracker</field>
+        <field name="description">Quality Control Tracking System</field>
+    </record>
+
+    <!-- Employee Group -->
+    <record id="group_qctracker_employee" model="res.groups">
+        <field name="name">QC Employee</field>
+        <field name="category_id" ref="module_qc_tracker"/>
+        <field name="implied_ids" eval="[(4,ref('base.group_user'))]"/>
+    </record>
+
+    <!-- Manager Group -->
+    <record id="group_qctracker_manager" model="res.groups">
+        <field name="name">QC Manager</field>
+        <field name="category_id" ref="module_qc_tracker"/>
+        <field name="implied_ids" eval="[(4,ref('group_qctracker_employee'))]"/>
+        <field name="users" eval="[(4,ref('base.user_root')),(4,ref('base.user_admin'))]"/>
+    </record>
+
+    <!-- Admin Group -->
+    <record id="group_qctracker_admin" model="res.groups">
+        <field name="name">QC Administrator</field>
+        <field name="category_id" ref="module_qc_tracker"/>
+        <field name="implied_ids" eval="[(4,ref('group_qctracker_manager'))]"/>
+    </record>
+
+    <!-- Access Rights for Project Delivery (QC Employee) -->
+    <record id="access_qctracker_projectdelivery" model="ir.model.access">
+        <field name="name">Access to Project Delivery (QC Employee)</field>
+        <field name="model_id" ref="model_qctracker_projectdelivery"/>
+        <field name="group_id" ref="group_qctracker_employee"/>
+        <field name="perm_read" eval="1"/>
+        <field name="perm_write" eval="0"/>
+        <field name="perm_create" eval="0"/>
+        <field name="perm_unlink" eval="0"/>
+    </record>
+
+    <!-- Access Rights for Project Delivery (QC Manager) -->
+    <record id="access_qctracker_projectdelivery_manager" model="ir.model.access">
+        <field name="name">Access to Project Delivery (QC Manager)</field>
+        <field name="model_id" ref="model_qctracker_projectdelivery"/>
+        <field name="group_id" ref="group_qctracker_manager"/>
+        <field name="perm_read" eval="1"/>
+        <field name="perm_write" eval="1"/>
+        <field name="perm_create" eval="1"/>
+        <field name="perm_unlink" eval="0"/>
+    </record>
+
+    <!-- Access Rights for Project Delivery (QC Admin) -->
+    <record id="access_qctracker_projectdelivery_admin" model="ir.model.access">
+        <field name="name">Access to Project Delivery (QC Admin)</field>
+        <field name="model_id" ref="model_qctracker_projectdelivery"/>
+        <field name="group_id" ref="group_qctracker_admin"/>
+        <field name="perm_read" eval="1"/>
+        <field name="perm_write" eval="1"/>
+        <field name="perm_create" eval="1"/>
+        <field name="perm_unlink" eval="1"/>
+    </record>
+
+    <!-- Access Rights for Skill (QC Employee) -->
+    <record id="access_qctracker_skill" model="ir.model.access">
+        <field name="name">Access to Skill (QC Employee)</field>
+        <field name="model_id" ref="model_qctracker_skill"/>
+        <field name="group_id" ref="group_qctracker_employee"/>
+        <field name="perm_read" eval="1"/>
+        <field name="perm_write" eval="0"/>
+        <field name="perm_create" eval="0"/>
+        <field name="perm_unlink" eval="0"/>
+    </record>
+
+    <!-- Access Rights for Skill (QC Manager) -->
+    <record id="access_qctracker_skill_manager" model="ir.model.access">
+        <field name="name">Access to Skill (QC Manager)</field>
+        <field name="model_id" ref="model_qctracker_skill"/>
+        <field name="group_id" ref="group_qctracker_manager"/>
+        <field name="perm_read" eval="1"/>
+        <field name="perm_write" eval="1"/>
+        <field name="perm_create" eval="1"/>
+        <field name="perm_unlink" eval="0"/>
+    </record>
+
+    <!-- Access Rights for Skill (QC Admin) -->
+    <record id="access_qctracker_skill_admin" model="ir.model.access">
+        <field name="name">Access to Skill (QC Admin)</field>
+        <field name="model_id" ref="model_qctracker_skill"/>
+        <field name="group_id" ref="group_qctracker_admin"/>
+        <field name="perm_read" eval="1"/>
+        <field name="perm_write" eval="1"/>
+        <field name="perm_create" eval="1"/>
+        <field name="perm_unlink" eval="1"/>
+    </record>
+
+    <!-- Access Rights for Task (QC Employee) -->
+    <record id="access_qctracker_task" model="ir.model.access">
+        <field name="name">Access to Task (QC Employee)</field>
+        <field name="model_id" ref="model_qctracker_task"/>
+        <field name="group_id" ref="group_qctracker_employee"/>
+        <field name="perm_read" eval="1"/>
+        <field name="perm_write" eval="0"/>
+        <field name="perm_create" eval="0"/>
+        <field name="perm_unlink" eval="0"/>
+    </record>
+
+    <!-- Access Rights for Task (QC Manager) -->
+    <record id="access_qctracker_task_manager" model="ir.model.access">
+        <field name="name">Access to Task (QC Manager)</field>
+        <field name="model_id" ref="model_qctracker_task"/>
+        <field name="group_id" ref="group_qctracker_manager"/>
+        <field name="perm_read" eval="1"/>
+        <field name="perm_write" eval="1"/>
+        <field name="perm_create" eval="1"/>
+        <field name="perm_unlink" eval="0"/>
+    </record>
+
+    <!-- Access Rights for Task (QC Admin) -->
+    <record id="access_qctracker_task_admin" model="ir.model.access">
+        <field name="name">Access to Task (QC Admin)</field>
+        <field name="model_id" ref="model_qctracker_task"/>
+        <field name="group_id" ref="group_qctracker_admin"/>
+        <field name="perm_read" eval="1"/>
+        <field name="perm_write" eval="1"/>
+        <field name="perm_create" eval="1"/>
+        <field name="perm_unlink" eval="1"/>
+    </record>
+
+    <!-- Access Rights for SubTask (QC Employee) -->
+    <record id="access_qctracker_subtask" model="ir.model.access">
+        <field name="name">Access to SubTask (QC Employee)</field>
+        <field name="model_id" ref="model_qctracker_subtask"/>
+        <field name="group_id" ref="group_qctracker_employee"/>
+        <field name="perm_read" eval="1"/>
+        <field name="perm_write" eval="0"/>
+        <field name="perm_create" eval="0"/>
+        <field name="perm_unlink" eval="0"/>
+    </record>
+
+    <!-- Access Rights for SubTask (QC Manager) -->
+    <record id="access_qctracker_subtask_manager" model="ir.model.access">
+        <field name="name">Access to SubTask (QC Manager)</field>
+        <field name="model_id" ref="model_qctracker_subtask"/>
+        <field name="group_id" ref="group_qctracker_manager"/>
+        <field name="perm_read" eval="1"/>
+        <field name="perm_write" eval="1"/>
+        <field name="perm_create" eval="1"/>
+        <field name="perm_unlink" eval="0"/>
+    </record>
+
+    <!-- Access Rights for SubTask (QC Admin) -->
+    <record id="access_qctracker_subtask_admin" model="ir.model.access">
+        <field name="name">Access to SubTask (QC Admin)</field>
+        <field name="model_id" ref="model_qctracker_subtask"/>
+        <field name="group_id" ref="group_qctracker_admin"/>
+        <field name="perm_read" eval="1"/>
+        <field name="perm_write" eval="1"/>
+        <field name="perm_create" eval="1"/>
+        <field name="perm_unlink" eval="1"/>
+    </record>
+
+</odoo>

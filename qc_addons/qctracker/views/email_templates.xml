@@ -1,0 +1,22 @@
+<odoo>
+    <data>
+
+        <record id="email_template_task_notification" model="mail.template">
+            <field name="name">Task Notification</field>
+            <field name="subject">New Task Assignment: ${object.name}</field>
+            <field name="email_from">${object.manager_id.email}</field>
+            <field name="email_to">${object.assigned_employee_id.email}</field>
+            <field name="body_html">
+                <![CDATA[
+                    <p>Hello ${object.assigned_employee_id.first_name},</p>
+                    <p>You have been assigned a new task: ${object.name}.</p>
+                    <p>Project: ${object.project_id.name}</p>
+                    <p>Start Date: ${object.start_date}</p>
+                    <p>Expected End Date: ${object.expected_end_date}</p>
+                    <p>Please review and proceed with the task.</p>
+                ]]>
+            </field>
+        </record>
+
+    </data>
+</odoo>

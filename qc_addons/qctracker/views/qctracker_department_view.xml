@@ -1,0 +1,95 @@
+<odoo>
+    <!-- Tree View for QCTrackerDepartment -->
+    <record id="view_qctracker_department_tree" model="ir.ui.view">
+        <field name="name">qctracker.department.tree</field>
+        <field name="model">qctracker.department</field>
+        <field name="arch" type="xml">
+            <tree string="Departments">
+                <field name="name"/>
+                <field name="manager_id"/>
+                <field name="employee_count"/>
+                <field name="active"/>
+            </tree>
+        </field>
+    </record>
+
+    <!-- Form View for QCTrackerDepartment -->
+    <record id="view_qctracker_department_form" model="ir.ui.view">
+        <field name="name">qctracker.department.form</field>
+        <field name="model">qctracker.department</field>
+        <field name="arch" type="xml">
+            <form string="Department">
+                <sheet>
+                    <group>
+                        <field name="name"/>
+                        <field name="manager_id"/>
+                        <field name="employee_count" readonly="1"/>
+                        <field name="active"/>
+                    </group>
+                    <footer>
+                        <button name="action_activate" type="object" string="Activate" class="oe_highlight"/>
+                        <button name="action_deactivate" type="object" string="Deactivate" class="oe_link"/>
+                    </footer>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <!-- Kanban View for QCTrackerDepartment -->
+    <!--record id="view_qctracker_department_kanban" model="ir.ui.view">
+        <field name="name">qctracker.department.kanban</field>
+        <field name="model">qctracker.department</field>
+        <field name="arch" type="xml">
+            <kanban string="Departments">
+                <field name="name"/>
+                <field name="manager_id"/>
+                <field name="employee_count"/>
+                <field name="active"/>
+                <templates>
+                    <t t-name="kanban-box">
+                        <div class="o_kanban_record oe_kanban_record_shadow o_kanban_record_hover animated fadeIn">
+                            <div class="o_kanban_record_header">
+                                <strong class="oe_kanban_record_name"><field name="name"/></strong>
+                            </div>
+                            <div class="o_kanban_record_body">
+                                <div><field name="manager_id"/></div>
+                                <div><field name="employee_count"/> employees</div>
+                            </div>
+                            <div class="o_kanban_status" t-if="record.active.raw_value">
+                                <span class="o_label o_label_success">Active</span>
+                            </div>
+                            <div class="o_kanban_status" t-if="not record.active.raw_value">
+                                <span class="o_label o_label_danger">Inactive</span>
+                            </div>
+                        </div>
+                    </t>
+                </templates>
+            </kanban>
+        </field>
+    </record-->
+
+    <!-- Graph View for QCTrackerDepartment -->
+    <!--record id="view_qctracker_department_graph" model="ir.ui.view">
+        <field name="name">qctracker.department.graph</field>
+        <field name="model">qctracker.department</field>
+        <field name="arch" type="xml">
+            <graph string="Department Graph">
+                <field name="employee_count" type="measure" string="Employee Count"/>
+                <field name="manager_id" type="dimension" string="Manager" group_by="1"/>
+            </graph>
+        </field>
+    </record-->
+
+    <!-- Pivot View for QCTrackerDepartment -->
+    <record id="view_qctracker_department_pivot" model="ir.ui.view">
+        <field name="name">qctracker.department.pivot</field>
+        <field name="model">qctracker.department</field>
+        <field name="arch" type="xml">
+            <pivot string="Department Pivot">
+                <field name="manager_id" type="row"/>
+                <field name="employee_count" type="measure"/>
+                <field name="active" type="col"/>
+            </pivot>
+        </field>
+    </record>
+</odoo>

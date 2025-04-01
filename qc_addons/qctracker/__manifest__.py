@@ -1,36 +1,57 @@
 # -*- coding: utf-8 -*-
 {
     'name': "QC Tracker",
-
-    'summary': """
-        Manage employee details, departments, projects, tasks, and performance evaluations in one integrated system.""",
-
+    'summary': "Quality Control Project and Task Management System",
     'description': """
-        QC Tracker is an odoo module that makes management and projects follow up
+        Comprehensive Quality Control tracking system with:
+        - Employee and department management
+        - Project and task tracking
+        - Performance evaluation
+        - Reporting and analytics
     """,
-
     'author': "Qualisys Consulting",
     'website': "https://qualisysconsulting.com/",
-
-    # Categories can be used to filter modules in modules listing
-    # Check https://github.com/odoo/odoo/blob/15.0/odoo/addons/base/data/ir_module_category_data.xml
-    # for the full list
-    'category': 'Human Resources/Employee Management',
+    'category': 'Quality Control', # Simplified category
     'version': '0.1',
-
-    # any module necessary for this one to work correctly
-    'depends': ['base'],
-
-    # always loaded
+    'depends': ['base', 'web','board','mail','project'],
     'data': [
-        # 'security/ir.model.access.csv',
-        'views/views.xml',
-        'views/templates.xml',
+        'security/qctracker_security.xml',
+        'security/ir.model.access.csv',
+        'views/qctracker_employee_view.xml',
+        'views/qctracker_project_view.xml',
+        'views/qctracker_task_view.xml',
+        'views/qctracker_sub_task_view.xml',
+        'views/qctracker_employee_rating_view.xml',
+        'views/qctracker_department_view.xml',
+        'views/qctracker_project_delivery_view.xml',
+        'views/qctracker_skill_view.xml',
+        'views/qctracker_sub_task_view.xml',
+        'views/qctracker_dashboard_view.xml',
+        'views/dashboard_v0.xml',
+        'views/qctracker_actions.xml',
+        'views/qctracker_menus.xml',
+        #'views/assets.xml',  # Assets (CSS/JS) for the dashboard
+        # 'views/views.xml',
+        #'views/email_templates.xml',
+        # 'views/templates.xml', # keep if needed otherwise remove.
     ],
-    # only loaded in demonstration mode
     'demo': [
         'demo/demo.xml',
     ],
+    'assets': {
+        'web.assets_backend': [
+            'qctracker/static/src/css/dashboard.css',
+            'qctracker/static/src/js/dashboard.js',
+            #'qctracker/static/src/css/dash.css',
+            #'qctracker/static/src/js/dash.js',
+            #'https://cdn.jsdelivr.net/npm/chart.js',
+            #'qctracker/static/src/js/helper.js',
+            #'qctracker/static/src/js/dashboard.js',
+            #'qctracker/static/src/xml/dashboard.xml',
+        ],
+    },
+    'images': [],
     'installable': True,
     'application': True,
+    'license': 'LGPL-3', #Added license.
 }

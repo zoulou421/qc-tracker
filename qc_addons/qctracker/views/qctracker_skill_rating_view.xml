@@ -1,0 +1,90 @@
+<odoo>
+    <!-- Tree View for Skill Ratings -->
+    <record id="view_qctracker_skillrating_tree" model="ir.ui.view">
+        <field name="name">qctracker.skillrating.tree</field>
+        <field name="model">qctracker.skillrating</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="rating_id"/>
+                <field name="skill_id"/>
+                <field name="rating"/>
+                <field name="comments"/>
+            </tree>
+        </field>
+    </record>
+
+    <!-- Form View for Skill Ratings with Animations -->
+    <record id="view_qctracker_skillrating_form" model="ir.ui.view">
+        <field name="name">qctracker.skillrating.form</field>
+        <field name="model">qctracker.skillrating</field>
+        <field name="arch" type="xml">
+            <form string="Skill Rating" class="o_form_sheet o_form_sheet_width_8">
+                <sheet>
+                    <group>
+                        <h2><strong>Skill Rating Details</strong></h2>
+                        <div class="oe_kanban_details animated fadeIn">
+                            <field name="rating_id" class="oe_form_field"/>
+                            <field name="skill_id" class="oe_form_field"/>
+                            <field name="rating" class="oe_form_field"/>
+                            <field name="comments" class="oe_form_field"/>
+                        </div>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <!-- Kanban View for Skill Ratings with Animations -->
+    <record id="view_qctracker_skillrating_kanban" model="ir.ui.view">
+        <field name="name">qctracker.skillrating.kanban</field>
+        <field name="model">qctracker.skillrating</field>
+        <field name="arch" type="xml">
+            <kanban class="o_kanban_cards o_kanban_stretched o_kanban_animated">
+                <field name="rating_id"/>
+                <field name="skill_id"/>
+                <field name="rating"/>
+                <field name="comments"/>
+                <templates>
+                    <t t-name="kanban-box">
+                        <div class="o_kanban_record oe_kanban_record_shadow o_kanban_record_hover animated fadeIn">
+                            <div class="o_kanban_record_header">
+                                <strong class="oe_kanban_record_name"><field name="skill_id"/></strong>
+                            </div>
+                            <div class="o_kanban_record_body">
+                                <div><field name="rating_id"/></div>
+                                <div><field name="rating"/></div>
+                                <div><field name="comments"/></div>
+                            </div>
+                        </div>
+                    </t>
+                </templates>
+            </kanban>
+        </field>
+    </record>
+
+    <!-- Graph View for Skill Ratings (Visualizing Average Rating by Skill) -->
+    <record id="view_qctracker_skillrating_graph" model="ir.ui.view">
+        <field name="name">qctracker.skillrating.graph</field>
+        <field name="model">qctracker.skillrating</field>
+        <field name="arch" type="xml">
+            <graph>
+                <field name="skill_id" type="dimension"/>
+                <field name="rating" type="measure"/>
+                <field name="rating_id" type="dimension"/>
+            </graph>
+        </field>
+    </record>
+
+    <!-- Pivot View for Skill Ratings (Detailed Rating Analysis) -->
+    <record id="view_qctracker_skillrating_pivot" model="ir.ui.view">
+        <field name="name">qctracker.skillrating.pivot</field>
+        <field name="model">qctracker.skillrating</field>
+        <field name="arch" type="xml">
+            <pivot>
+                <field name="skill_id"/>
+                <field name="rating"/>
+                <field name="rating_id"/>
+            </pivot>
+        </field>
+    </record>
+</odoo>

@@ -1,0 +1,74 @@
+<odoo>
+    <!-- Tree View for Projects -->
+    <record id="view_qctracker_project_tree" model="ir.ui.view">
+        <field name="name">qctracker.project.tree</field>
+        <field name="model">qctracker.project</field>
+        <field name="arch" type="xml">
+            <tree string="Projects">
+                <field name="name"/>
+                <field name="department_id"/>
+                <field name="start_date"/>
+                <field name="end_date"/>
+            </tree>
+        </field>
+    </record>
+
+    <!-- Form View for Projects -->
+    <record id="view_qctracker_project_form" model="ir.ui.view">
+        <field name="name">qctracker.project.form</field>
+        <field name="model">qctracker.project</field>
+        <field name="arch" type="xml">
+            <form string="Project">
+                <sheet>
+                    <group>
+                        <field name="name"/>
+                        <field name="department_id"/>
+                        <field name="description"/>
+                        <field name="start_date"/>
+                        <field name="end_date"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <!-- Kanban View for Projects -->
+    <record id="view_qctracker_project_kanban" model="ir.ui.view">
+        <field name="name">qctracker.project.kanban</field>
+        <field name="model">qctracker.project</field>
+        <field name="arch" type="xml">
+            <kanban string="Projects" class="o_kanban_cards o_kanban_stretched o_kanban_animated">
+                <field name="name"/>
+                <field name="department_id"/>
+                <field name="start_date"/>
+                <field name="end_date"/>
+                <templates>
+                    <t t-name="kanban-box">
+                        <div class="o_kanban_record oe_kanban_record_shadow o_kanban_record_hover animated fadeIn">
+                            <div class="o_kanban_record_header">
+                                <strong class="oe_kanban_record_name"><field name="name"/></strong>
+                            </div>
+                            <div class="o_kanban_record_body">
+                                <div><field name="department_id"/></div>
+                                <div><field name="start_date"/> - <field name="end_date"/></div>
+                            </div>
+                        </div>
+                    </t>
+                </templates>
+            </kanban>
+        </field>
+    </record>
+
+    <!-- Pivot View for Projects (Detailed Analysis by Department) -->
+    <record id="view_qctracker_project_pivot" model="ir.ui.view">
+        <field name="name">qctracker.project.pivot</field>
+        <field name="model">qctracker.project</field>
+        <field name="arch" type="xml">
+            <pivot string="Project Analysis">
+                <field name="department_id"/>
+                <field name="start_date"/>
+                <field name="end_date"/>
+            </pivot>
+        </field>
+    </record>
+</odoo>

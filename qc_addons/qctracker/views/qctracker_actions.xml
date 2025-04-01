@@ -1,0 +1,76 @@
+<odoo>
+
+
+
+    <!-- Action pour afficher les employés -->
+    <record id="action_qctracker_employee" model="ir.actions.act_window">
+        <field name="name">Employees</field>
+        <field name="res_model">qctracker.employee</field>
+        <field name="view_mode">tree,form,kanban,graph,pivot</field>
+        <field name="target">current</field>
+    </record>
+
+     <!-- Action pour afficher les départements -->
+    <record id="action_qctracker_department" model="ir.actions.act_window">
+        <field name="name">Departments</field>
+        <field name="res_model">qctracker.department</field>
+        <field name="view_mode">tree,form,pivot</field>
+        <field name="target">current</field>
+    </record>
+
+    <!-- Action pour afficher les projets -->
+    <record id="action_qctracker_project" model="ir.actions.act_window">
+        <field name="name">Projects</field>
+        <field name="res_model">qctracker.project</field>
+        <field name="view_mode">tree,form,kanban,pivot</field>
+        <field name="target">current</field>
+    </record>
+
+    <!-- Action pour afficher les tâches -->
+    <record id="action_qctracker_task" model="ir.actions.act_window">
+        <field name="name">Tasks</field>
+        <field name="res_model">qctracker.task</field>
+        <field name="view_mode">tree,form,kanban,pivot</field>
+        <field name="target">current</field>
+    </record>
+
+    <!-- Action pour afficher les sous-tâches -->
+    <record id="action_qctracker_subtask" model="ir.actions.act_window">
+        <field name="name">Subtasks</field>
+        <field name="res_model">qctracker.subtask</field>
+        <field name="view_mode">tree,form,kanban,pivot</field>
+        <field name="target">current</field>
+    </record>
+
+    <!-- Action pour afficher les évaluations des employés -->
+    <record id="action_qctracker_employee_rating" model="ir.actions.act_window">
+        <field name="name">Employee Ratings</field>
+        <field name="res_model">qctracker.employeerating</field>
+        <field name="view_mode">tree,form,graph</field>
+        <field name="target">current</field>
+    </record>
+
+    <!-- Action pour afficher les livraisons de projet -->
+    <record id="action_qctracker_projectdelivery" model="ir.actions.act_window">
+        <field name="name">Project Deliveries</field>
+        <field name="res_model">qctracker.projectdelivery</field>
+        <field name="view_mode">tree,form,kanban,pivot</field>
+        <field name="target">current</field>
+    </record>
+
+    <!-- Action pour afficher les compétences -->
+    <record id="action_qctracker_skill" model="ir.actions.act_window">
+        <field name="name">Skills</field>
+        <field name="res_model">qctracker.skill</field>
+        <field name="view_mode">tree,form,kanban,pivot</field>
+        <field name="target">current</field>
+    </record>
+
+    <!-- Action pour afficher les évaluations des compétences -->
+    <record id="action_qctracker_skillrating" model="ir.actions.act_window">
+        <field name="name">Skill Ratings</field>
+        <field name="res_model">qctracker.skillrating</field>
+        <field name="view_mode">tree,form,kanban,graph,pivot</field>
+        <field name="target">current</field>
+    </record>
+</odoo>

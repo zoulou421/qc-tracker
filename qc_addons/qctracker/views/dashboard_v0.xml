@@ -1,0 +1,19 @@
+<odoo>
+    <data>
+
+        <!-- Action pour afficher le Dashboard avec les vues Kanban et Graph -->
+        <record id="action_qctracker_dashboard" model="ir.actions.act_window">
+            <field name="name">QC Tracker Dashboard</field>
+            <field name="res_model">qctracker.dashboard</field>
+            <field name="view_mode">kanban,graph</field>  <!-- Définit les vues Kanban et Graphique -->
+            <field name="target">current</field>
+        </record>
+
+        <!-- Menu pour le Dashboard -->
+        <menuitem id="menu_qctracker_dashboard"
+                  name="Dashboard"
+                  parent="menu_qctracker_root"
+                  action="action_qctracker_dashboard"/>
+
+    </data>
+</odoo>

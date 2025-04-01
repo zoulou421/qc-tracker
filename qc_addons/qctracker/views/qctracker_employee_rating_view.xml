@@ -1,0 +1,101 @@
+<odoo>
+    <!-- Tree View for QCTrackerEmployeeRating -->
+    <record id="view_qctracker_employee_rating_tree" model="ir.ui.view">
+        <field name="name">qctracker.employee.rating.tree</field>
+        <field name="model">qctracker.employeerating</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="employee_id"/>
+                <field name="project_id"/>
+                <field name="manager_id"/>
+                <field name="rating"/>
+                <field name="on_time"/>
+                <field name="evaluation_date"/>
+                <field name="comments"/>
+            </tree>
+        </field>
+    </record>
+
+    <!-- Form View for QCTrackerEmployeeRating -->
+    <record id="view_qctracker_employee_rating_form" model="ir.ui.view">
+        <field name="name">qctracker.employee.rating.form</field>
+        <field name="model">qctracker.employeerating</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>
+                        <field name="employee_id"/>
+                        <field name="project_id"/>
+                        <field name="manager_id"/>
+                        <field name="rating"/>
+                        <field name="on_time"/>
+                        <field name="comments"/>
+                        <field name="evaluation_date"/>
+                    </group>
+                    <footer>
+                        <button name="action_submit" type="object" string="Submit" class="oe_highlight"/>
+                        <button name="action_reset" type="object" string="Reset" class="oe_link"/>
+                    </footer>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <!-- Kanban View for QCTrackerEmployeeRating -->
+    <!--record id="view_qctracker_employee_rating_kanban" model="ir.ui.view">
+        <field name="name">qctracker.employee.rating.kanban</field>
+        <field name="model">qctracker.employeerating</field>
+        <field name="arch" type="xml">
+            <kanban>
+                <field name="employee_id"/>
+                <field name="project_id"/>
+                <field name="rating"/>
+                <field name="on_time"/>
+                <templates>
+                    <t t-name="kanban-box">
+                        <div class="o_kanban_record">
+                            <div class="o_kanban_details">
+                                <strong><field name="employee_id"/></strong>
+                                <div><field name="rating"/></div>
+                                <div t-if="record.on_time.raw_value">
+                                    <span class="o_label o_label_success">On Time</span>
+                                </div>
+                                <div t-if="not record.on_time.raw_value">
+                                    <span class="o_label o_label_danger">Delayed</span>
+                                </div>
+                            </div>
+                        </div>
+                    </t>
+                </templates>
+            </kanban>
+        </field>
+    </record-->
+
+    <!-- Pivot View for QCTrackerEmployeeRating -->
+    <!--record id="view_qctracker_employee_rating_pivot" model="ir.ui.view">
+        <field name="name">qctracker.employee.rating.pivot</field>
+        <field name="model">qctracker.employeerating</field>
+        <field name="arch" type="xml">
+            <pivot>
+                <field name="employee_id" type="row"/>
+                <field name="rating" type="column"/>
+                <field name="evaluation_date" type="measure"/>
+                <field name="on_time" type="measure"/>
+            </pivot>
+        </field>
+    </record-->
+
+    <!-- Graph View for QCTrackerEmployeeRating -->
+    <record id="view_qctracker_employee_rating_graph" model="ir.ui.view">
+        <field name="name">qctracker.employee.rating.graph</field>
+        <field name="model">qctracker.employeerating</field>
+        <field name="arch" type="xml">
+            <graph>
+                <field name="rating" type="row"/>
+                <field name="on_time" type="measure"/>
+                <field name="evaluation_date" type="column"/>
+                <field name="employee_id" type="measure"/>
+            </graph>
+        </field>
+    </record>
+</odoo>
