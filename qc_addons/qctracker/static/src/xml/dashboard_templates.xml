@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates xml:space="preserve">
+    <t t-name="qctracker.dashboard_templates">
+        <div class="o_qctracker_dashboard" style="height:100%; width: 100%;">
+            <iframe src="http://127.0.0.1:8050/dash/"
+                   width="100%"
+                   height="100%"
+                   style="border:none;"
+                   frameborder="0"></iframe>
+        </div>
+        
+        <style>
+            /* Style pour que le dashboard prenne tout l'espace disponible */
+            .o_qctracker_dashboard {
+                padding: 0;
+                margin: 0;
+                overflow: hidden;
+            }
+            
+            /* Assurer que l'iframe prend tout l'espace */
+            .o_qctracker_dashboard iframe {
+                width: 100%;
+                height: 100%;
+                border: none;
+                display: block;
+            }
+        </style>
+    </t>
+</templates>

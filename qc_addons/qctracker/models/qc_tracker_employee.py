@@ -5,7 +5,7 @@ from datetime import datetime, timedelta
 
 class QCTrackerEmployee(models.Model):
     #_inherit = 'employee.transfer'  # Inherit from EmployeeTransfer model
-    _inherit = 'employee.transfer'
+    # _inherit = 'employee.transfer'
     _name = 'qctracker.employee'
     _description = 'An Employee can belong to a Department and be a Manager'
 

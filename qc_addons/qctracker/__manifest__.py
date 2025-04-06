@@ -13,7 +13,7 @@
     'website': "https://qualisysconsulting.com/",
     'category': 'Quality Control', # Simplified category
     'version': '0.1',
-    'depends': ['base', 'web','board','mail','project'],
+    'depends': ['base','web','board','mail','project'],
     'data': [
         'security/qctracker_security.xml',
         'security/ir.model.access.csv',
@@ -26,11 +26,18 @@
         'views/qctracker_project_delivery_view.xml',
         'views/qctracker_skill_view.xml',
         'views/qctracker_sub_task_view.xml',
-        'views/qctracker_dashboard_view.xml',
-        'views/dashboard_v0.xml',
         'views/qctracker_actions.xml',
+        'views/qctracker_dashboard_view.xml',
+        # 'views/qctracker_actions.xml',
+        'views/dashboard_v0.xml',
+       
+
+        
+        
         'views/qctracker_menus.xml',
-        #'views/assets.xml',  # Assets (CSS/JS) for the dashboard
+        #  'views/assets.xml',
+        
+        # 'views/assets.xml',  # Assets (CSS/JS) for the dashboard
         # 'views/views.xml',
         #'views/email_templates.xml',
         # 'views/templates.xml', # keep if needed otherwise remove.
@@ -46,10 +53,14 @@
             #'qctracker/static/src/js/dash.js',
             #'https://cdn.jsdelivr.net/npm/chart.js',
             #'qctracker/static/src/js/helper.js',
-            #'qctracker/static/src/js/dashboard.js',
-            #'qctracker/static/src/xml/dashboard.xml',
+            #'qctracker/static/src/js/dashboard.js'
         ],
+    #     'web.assets_qweb': [
+    #     'qctracker/static/src/xml/dashboard_templates.xml',
+    # ],
+
     },
+    
     'images': [],
     'installable': True,
     'application': True,
