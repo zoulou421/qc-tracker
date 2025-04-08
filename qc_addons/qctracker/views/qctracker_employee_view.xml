@@ -1,71 +1,108 @@
+<?xml version="1.0" encoding="utf-8"?>
 <odoo>
-    <!-- Tree View for Employees -->
+
     <record id="view_qctracker_employee_tree" model="ir.ui.view">
         <field name="name">qctracker.employee.tree</field>
         <field name="model">qctracker.employee</field>
         <field name="arch" type="xml">
             <tree>
-                <field name="name" string="Full Name"/>
+                <field name="name"/>
                 <field name="email"/>
                 <field name="phone"/>
                 <field name="role"/>
                 <field name="department_id"/>
                 <field name="is_manager"/>
-                <field name="gender"/>
             </tree>
         </field>
     </record>
 
-    <!-- Form View for Employees -->
     <record id="view_qctracker_employee_form" model="ir.ui.view">
         <field name="name">qctracker.employee.form</field>
         <field name="model">qctracker.employee</field>
         <field name="arch" type="xml">
-            <form class="o_form_sheet o_form_sheet_width_8">
+            <form>
                 <sheet>
-                    <div class="oe_structure"/>
                     <group>
-                        <h2><strong>Employee Details</strong></h2>
-                        <div class="oe_kanban_details animated fadeIn">
-                            <field name="name" class="oe_form_field"/>
-                            <field name="email" class="oe_form_field"/>
-                            <field name="phone" class="oe_form_field"/>
-                            <field name="role" class="oe_form_field"/>
-                            <field name="department_id" class="oe_form_field"/>
-                            <field name="is_manager" class="oe_form_field"/>
-                            <field name="gender" class="oe_form_field"/>
-                            <field name="country" class="oe_form_field"/>
-                        </div>
+                        <group>
+                            <field name="first_name"/>
+                            <field name="last_name"/>
+                            <field name="email"/>
+                            <field name="phone"/>
+                            <field name="gender"/>
+                            <field name="country_dynamic"/>
+                        </group>
+                        <group>
+                            <field name="role"/>
+                            <field name="department_id"/>
+                            <field name="is_manager"/>
+                            <field name="skill_ids" widget="many2many_tags"/>
+                            <field name="user_id"/>
+                        </group>
                     </group>
+                    <notebook>
+                        <page string="Tasks">
+                            <field name="task_ids">
+                                <tree>
+                                    <field name="name"/>
+                                    <field name="project_id"/>
+                                    <field name="deadline"/>
+                                    <field name="priority"/>
+                                    <field name="status"/>
+                                </tree>
+                            </field>
+                        </page>
+                        <page string="Ratings">
+                            <field name="rating_employee_ids">
+                                <tree>
+                                    <field name="rating"/>
+                                    <field name="comment"/>
+                                </tree>
+                            </field>
+                        </page>
+                        <page string="Projects">
+                            <field name="project_ids">
+                                <tree>
+                                    <field name="name"/>
+                                    <field name="department_id"/>
+                                    <field name="start_date"/>
+                                    <field name="end_date"/>
+                                </tree>
+                            </field>
+                        </page>
+                         <page string="Notifications">
+                            <field name="notification_ids">
+                                <tree>
+                                    <field name="message"/>
+                                    <field name="task_id"/>
+                                    <field name="notification_date"/>
+                                    <field name="read"/>
+                                </tree>
+                            </field>
+                        </page>
+                    </notebook>
                 </sheet>
             </form>
         </field>
     </record>
 
-    <!-- Kanban View with Animations -->
     <record id="view_qctracker_employee_kanban" model="ir.ui.view">
         <field name="name">qctracker.employee.kanban</field>
         <field name="model">qctracker.employee</field>
         <field name="arch" type="xml">
-            <kanban class="o_kanban_cards o_kanban_stretched">
-                <field name="name"/>
-                <field name="role"/>
-                <field name="department_id"/>
-                <field name="is_manager"/>
-                <field name="gender"/>
+            <kanban>
+                <field name="id" invisible="1"/>
                 <templates>
                     <t t-name="kanban-box">
-                        <div class="o_kanban_record oe_kanban_record_shadow o_kanban_record_hover">
-                            <div class="o_kanban_record_header">
-                                <strong class="oe_kanban_record_name"><field name="name"/></strong>
-                                <div class="o_kanban_record_role"><field name="role"/></div>
-                            </div>
-                            <div class="o_kanban_record_body">
-                                <div class="o_kanban_record_department"><field name="department_id"/></div>
-                                <div class="o_kanban_record_gender"><field name="gender"/></div>
-                            </div>
-                            <div class="o_kanban_footer">
-                                <div class="o_kanban_footer_is_manager"><field name="is_manager"/></div>
+                        <div class="oe_kanban_global_click">
+                            <div class="oe_kanban_details">
+                                <strong class="oe_partner_heading"><field name="name"/></strong>
+                                <ul>
+                                    <li>Email: <field name="email"/></li>
+                                    <li>Phone: <field name="phone"/></li>
+                                    <li>Role: <field name="role"/></li>
+                                    <li>Department: <field name="department_id"/></li>
+                                    <li>Is Manager: <field name="is_manager"/></li>
+                                </ul>
                             </div>
                         </div>
                     </t>
@@ -74,29 +111,14 @@
         </field>
     </record>
 
-    <!-- Graph View for Employees (Visualizing Role Distribution) -->
-    <!--record id="view_qctracker_employee_graph" model="ir.ui.view">
+    <record id="view_qctracker_employee_graph" model="ir.ui.view">
         <field name="name">qctracker.employee.graph</field>
         <field name="model">qctracker.employee</field>
         <field name="arch" type="xml">
-            <graph>
-                <field name="role" type="dimension"/>
-                <field name="department_id" type="measure"/>
-                <field name="is_manager" type="measure"/>
+            <graph type="pie">
+                <field name="role" type="row"/>
             </graph>
         </field>
-    </record-->
-
-    <!-- Pivot View for Employees (Detailed Analysis) -->
-    <record id="view_qctracker_employee_pivot" model="ir.ui.view">
-        <field name="name">qctracker.employee.pivot</field>
-        <field name="model">qctracker.employee</field>
-        <field name="arch" type="xml">
-            <pivot>
-                <field name="role"/>
-                <field name="department_id"/>
-                <field name="is_manager"/>
-            </pivot>
-        </field>
     </record>
+
 </odoo>

@@ -1,8 +1,12 @@
+# -*- coding: utf-8 -*-
 from odoo import models, fields, api
 
-from odoo import models, fields, api
 
 class QCTrackerDashboard(models.Model):
+    """
+    Modèle Odoo représentant un tableau de bord pour le suivi de la qualité (QC Tracker).
+    Ce modèle calcule et affiche des statistiques clés concernant les employés, les projets, les tâches et les sous-tâches.
+    """
     _name = 'qctracker.dashboard'
     _description = 'QC Tracker Dashboard'
 
@@ -18,7 +22,10 @@ class QCTrackerDashboard(models.Model):
 
     @api.depends_context('active_test')
     def _compute_counts(self):
-        """Optimisation des requêtes pour récupérer les totaux."""
+        """
+        Calcule le nombre total d'employés, de projets, de tâches et de sous-tâches.
+        Optimise les requêtes en récupérant tous les totaux en une seule opération.
+        """
         counts = {
             model: self.env[model].search_count([])
             for model in ['qctracker.employee', 'qctracker.project', 'qctracker.task', 'qctracker.subtask']
@@ -31,7 +38,9 @@ class QCTrackerDashboard(models.Model):
 
     @api.depends('subtasks_count')
     def _compute_progress(self):
-        """Calcul de la progression globale."""
+        """
+        Calcule la progression globale en pourcentage, basée sur le nombre de sous-tâches terminées par rapport au total.
+        """
         completed_subtasks = self.env['qctracker.subtask'].search_count([('state', '=', 'done')])
         total_subtasks = self.env['qctracker.subtask'].search_count([])
         for rec in self:
@@ -39,18 +48,24 @@ class QCTrackerDashboard(models.Model):
 
     @api.depends('projects_count')
     def _compute_ongoing_projects(self):
-        """Nombre de projets en cours."""
+        """
+        Calcule le nombre de projets en cours.
+        """
         for rec in self:
             rec.ongoing_projects_count = self.env['qctracker.project'].search_count([('state', '=', 'in_progress')])
 
     @api.depends('tasks_count')
     def _compute_completed_tasks(self):
-        """Nombre de tâches terminées."""
+        """
+        Calcule le nombre de tâches terminées.
+        """
         for rec in self:
             rec.completed_tasks_count = self.env['qctracker.task'].search_count([('state', '=', 'done')])
 
     @api.depends('tasks_count')
     def _compute_pending_tasks(self):
-        """Nombre de tâches en attente."""
+        """
+        Calcule le nombre de tâches en attente.
+        """
         for rec in self:
             rec.pending_tasks_count = self.env['qctracker.task'].search_count([('state', '=', 'pending')])
