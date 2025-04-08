@@ -14,7 +14,7 @@ description (Text) : La description du projet.
 department_id (Many2one vers qctracker.department) : Le département auquel le projet est associé.
 start_date (Date) : La date de début du projet.
 end_date (Date) : La date de fin du projet.
-manager_id (Many2one vers qctracker.employee) : Le manager du projet.
+employee_id (Many2one vers qctracker.employee) : Le manager du projet.
 task_ids (One2many vers qctracker.task) : Les tâches associées au projet.
 status (Selection, par défaut 'to_do') : Le statut du projet (to_do, in_progress, done).
 progress (Integer, calculé et stocké) : La progression du projet en pourcentage.
@@ -46,6 +46,7 @@ class QCTrackerProject(models.Model):
     Un projet est associé à un département et peut avoir plusieurs tâches.
     """
     _name = 'qctracker.project'
+    _inherit = ['mail.thread', 'mail.activity.mixin']  # Add this line
     _description = 'A Project is attached to a Department'
 
     name = fields.Char(string='Name', required=True)

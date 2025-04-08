@@ -1,94 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
 <odoo>
-    <!-- Vue Liste (Tree) pour les sous-tâches -->
-    <record id="view_qctracker_subtask_tree" model="ir.ui.view">
-        <field name="name">qctracker.subtask.tree</field>
-        <field name="model">qctracker.subtask</field>
-        <field name="arch" type="xml">
-            <tree>
-                <field name="name"/>
-                <field name="task_id"/>
-                <field name="employee_id"/>
-                <field name="start_date"/>
-                <field name="end_date"/>
-                <field name="status"/>
-            </tree>
-        </field>
-    </record>
+    <data>
+        <record id="qctracker_subtask_view_tree" model="ir.ui.view">
+            <field name="name">qctracker.subtask.tree.styled</field>
+            <field name="model">qctracker.subtask</field>
+            <field name="arch" type="xml">
+                <tree decoration-info="status == 'in_progress'" decoration-success="status == 'completed'">
+                    <field name="name" string="Subtask Name ️" widget="badge" decoration-success="1"/>
+                    <field name="task_id" string="Task " widget="many2one_button"/>
+                    <field name="start_date" string="Start Date "/>
+                    <field name="end_date" string="End Date ✅"/>
+                    <field name="status" string="Status " widget="badge"/>
+                </tree>
+            </field>
+        </record>
 
-    <!-- Vue Formulaire (Form) pour les sous-tâches avec animations -->
-    <record id="view_qctracker_subtask_form" model="ir.ui.view">
-        <field name="name">qctracker.subtask.form</field>
-        <field name="model">qctracker.subtask</field>
-        <field name="arch" type="xml">
-            <form string="Subtask Details" class="o_form_sheet o_form_sheet_width_8">
-                <sheet>
-                    <group>
-                        <h2><strong>Subtask Information</strong></h2>
-                        <div class="oe_kanban_details animated fadeIn">
-                            <field name="name" class="oe_form_field"/>
-                            <field name="task_id" class="oe_form_field"/>
-                            <field name="description" class="oe_form_field"/>
-                            <field name="employee_id" class="oe_form_field"/>
-                            <field name="start_date" class="oe_form_field"/>
-                            <field name="end_date" class="oe_form_field"/>
-                            <field name="status" class="oe_form_field"/>
+        <record id="qctracker_subtask_view_form" model="ir.ui.view">
+            <field name="name">qctracker.subtask.form.styled</field>
+            <field name="model">qctracker.subtask</field>
+            <field name="arch" type="xml">
+                <form>
+                    <sheet>
+                        <div class="oe_title">
+                            <h1>
+                                <field name="name" readonly="1"/>
+                            </h1>
                         </div>
-                    </group>
-                </sheet>
-            </form>
-        </field>
-    </record>
+                        <group>
+                            <group string="Subtask Details ℹ️" style="background-color:#f0f8ff;">
+                                <field name="name" string="Subtask Name ️" placeholder="Enter subtask name" style="color:blue;"/>
+                                <field name="description" string="Description " placeholder="Enter description" style="color:green;"/>
+                                <field name="task_id" string="Task " options="{'no_create_edit': True}"/>
+                            </group>
+                            <group string="Dates &amp; Status " style="background-color:#e6e6fa;">
+                                <field name="start_date" string="Start Date "/>
+                                <field name="end_date" string="End Date ✅"/>
+                                <field name="status" string="Status " widget="radio" options="{'horizontal': true}"/>
+                            </group>
+                        </group>
+                    </sheet>
+                    <div class="oe_chatter">
+                        <field name="message_follower_ids" widget="mail_followers"/>
+                        <field name="message_ids" widget="mail_thread"/>
+                    </div>
+                </form>
+            </field>
+        </record>
 
-    <!-- Vue Kanban pour les sous-tâches avec animations -->
-    <record id="view_qctracker_subtask_kanban" model="ir.ui.view">
-        <field name="name">qctracker.subtask.kanban</field>
-        <field name="model">qctracker.subtask</field>
-        <field name="arch" type="xml">
-            <kanban class="o_kanban_cards o_kanban_stretched o_kanban_animated">
-                <field name="name"/>
-                <field name="status"/>
-                <field name="employee_id"/>
-                <templates>
-                    <t t-name="kanban-box">
-                        <div class="o_kanban_record oe_kanban_record_shadow o_kanban_record_hover animated fadeIn">
-                            <div class="o_kanban_record_header">
-                                <strong class="oe_kanban_record_name"><field name="name"/></strong>
+        <record id="qctracker_subtask_view_kanban" model="ir.ui.view">
+            <field name="name">qctracker.subtask.kanban.styled</field>
+            <field name="model">qctracker.subtask</field>
+            <field name="arch" type="xml">
+                <kanban default_group_by="status">
+                    <field name="id" invisible="1"/>
+                    <templates>
+                        <t t-name="kanban-box">
+                            <div class="oe_kanban_global_click" style="border: 2px solid #ddd; padding: 10px; margin: 5px; border-radius: 5px; background-color: #f9f9f9; box-shadow: 2px 2px 5px #ccc; transition: transform 0.3s ease;">
+                                <div class="oe_kanban_details">
+                                    <h4 style="color: #333;">
+                                        <a type="open" style="text-decoration: none; color: #007bff;">
+                                            <field name="name"/>
+                                        </a>
+                                    </h4>
+                                    <ul style="list-style-type: none; padding: 0;">
+                                        <li style="margin-bottom: 5px;">
+                                            <i class="fa fa-tasks" style="color: #008000;"></i> Task: <field name="task_id" style="color: #008000;"/>
+                                        </li>
+                                        <li style="margin-bottom: 5px;">
+                                            <i class="fa fa-calendar" style="color: #800080;"></i> Start Date: <field name="start_date" style="color: #800080;"/>
+                                        </li>
+                                        <li style="margin-bottom: 5px;">
+                                            <i class="fa fa-flag" style="color: #000080;"></i> Status: <field name="status" style="color: #000080;"/>
+                                        </li>
+                                    </ul>
+                                </div>
                             </div>
-                            <div class="o_kanban_record_body">
-                                <div>Status: <field name="status"/></div>
-                                <div>Assigned to: <field name="employee_id"/></div>
-                            </div>
-                        </div>
-                    </t>
-                </templates>
-            </kanban>
-        </field>
-    </record>
-
-    <!-- Vue Graph pour les sous-tâches (Visualisation des sous-tâches par statut) -->
-    <!--record id="view_qctracker_subtask_graph" model="ir.ui.view">
-        <field name="name">qctracker.subtask.graph</field>
-        <field name="model">qctracker.subtask</field>
-        <field name="arch" type="xml">
-            <graph>
-                <field name="status" type="dimension"/>
-                <field name="name" type="measure"/>
-            </graph>
-        </field>
-    </record-->
-
-    <!-- Vue Pivot pour les sous-tâches (Analyse des sous-tâches par employé et statut) -->
-    <record id="view_qctracker_subtask_pivot" model="ir.ui.view">
-        <field name="name">qctracker.subtask.pivot</field>
-        <field name="model">qctracker.subtask</field>
-        <field name="arch" type="xml">
-            <pivot>
-                <field name="employee_id"/>
-                <field name="status"/>
-                <field name="task_id"/>
-                <field name="start_date"/>
-                <field name="end_date"/>
-            </pivot>
-        </field>
-    </record>
+                        </t>
+                    </templates>
+                </kanban>
+            </field>
+        </record>
+    </data>
 </odoo>

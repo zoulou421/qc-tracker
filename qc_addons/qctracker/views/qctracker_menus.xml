@@ -1,35 +1,19 @@
 <odoo>
     <data>
-        <!-- Main Menu -->
-        <menuitem id="menu_qctracker_root" name="QC Tracker" sequence="10"/>
+        <menuitem id="menu_qctracker_root" name="QC Tracker 📊" sequence="10"/>
 
-        <!-- Dashboard Menu -->
+        <menuitem id="menu_qctracker_employee" name="Employees 👥" parent="menu_qctracker_root" action="action_qctracker_employee" sequence="10"/>
 
-        <!-- Employees Menu -->
-        <menuitem id="menu_qctracker_employee" name="Employees" parent="menu_qctracker_root" action="action_qctracker_employee" sequence="10"/>
+        <menuitem id="menu_qctracker_department" name="Departments 🏢" parent="menu_qctracker_root" action="action_qctracker_department" sequence="20"/>
 
-        <!-- Departments Menu -->
-        <menuitem id="menu_qctracker_department" name="Departments" parent="menu_qctracker_root" action="action_qctracker_department" sequence="20"/>
+        <menuitem id="menu_qctracker_project" name="Projects 🚀" parent="menu_qctracker_root" action="action_qctracker_project" sequence="30"/>
 
-        <!-- Projects Menu -->
-        <menuitem id="menu_qctracker_project" name="Projects" parent="menu_qctracker_root" action="action_qctracker_project" sequence="30"/>
+        <menuitem id="menu_qctracker_task" name="Tasks 📋" parent="menu_qctracker_root" action="action_qctracker_task" sequence="40"/>
 
-        <!-- Tasks Menu -->
-        <menuitem id="menu_qctracker_task" name="Tasks" parent="menu_qctracker_root" action="action_qctracker_task" sequence="35"/>
+        <menuitem id="menu_qctracker_process" name="Processes 🔄" parent="menu_qctracker_root" action="action_qctracker_process" sequence="50"/>
 
-        <!-- Subtasks Menu -->
-        <menuitem id="menu_qctracker_subtask" name="Subtasks" parent="menu_qctracker_root" action="action_qctracker_subtask" sequence="40"/>
+        <menuitem id="menu_qctracker_sub_process" name="Sub-Processes 📄" parent="menu_qctracker_root" action="action_qctracker_sub_process" sequence="60"/>
 
-        <!-- Employee Ratings Menu -->
-        <menuitem id="menu_qctracker_employee_rating" name="Employee Ratings" parent="menu_qctracker_root" action="action_qctracker_employee_rating" sequence="50"/>
-
-        <!-- Project Deliveries Menu -->
-        <menuitem id="menu_qctracker_projectdelivery" name="Project Deliveries" parent="menu_qctracker_root" action="action_qctracker_projectdelivery" sequence="60"/>
-
-        <!-- Skills Menu -->
-        <menuitem id="menu_qctracker_skill" name="Skills" parent="menu_qctracker_root" action="action_qctracker_skill" sequence="70"/>
-
-        <!-- Skill Ratings Menu -->
-        <menuitem id="menu_qctracker_skillrating" name="Skill Ratings" parent="menu_qctracker_root" action="action_qctracker_skillrating" sequence="80"/>
+        <menuitem id="menu_qctracker_subtask" name="Subtasks 🧩" parent="menu_qctracker_root" action="action_qctracker_subtask" sequence="70"/>
     </data>
 </odoo>

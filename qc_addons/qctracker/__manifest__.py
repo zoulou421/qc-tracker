@@ -17,9 +17,9 @@
     'data': [
         'security/qctracker_security.xml',
         'security/ir.model.access.csv',
-        #'views/qctracker_employee_view.xml',
-        #'views/qctracker_project_view.xml',
-        #'views/qctracker_task_view.xml',
+        'views/qctracker_employee_view.xml',
+        'views/qctracker_project_view.xml',
+        'views/qctracker_task_view.xml',
         #'views/qctracker_sub_task_view.xml',
         #'views/qctracker_employee_rating_view.xml',
         #'views/qctracker_department_view.xml',
@@ -27,8 +27,8 @@
         #'views/qctracker_skill_view.xml',
         #'views/qctracker_sub_task_view.xml',
         #'views/dashboard_v0.xml',
-        #'views/qctracker_actions.xml',
-        #'views/qctracker_menus.xml',
+        'views/qctracker_actions.xml',
+        'views/qctracker_menus.xml',
         #'views/assets.xml',  # Assets (CSS/JS) for the dashboard
         # 'views/views.xml',
         #'views/email_templates.xml',

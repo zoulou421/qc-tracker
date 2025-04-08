@@ -1,74 +1,110 @@
+<?xml version="1.0" encoding="UTF-8"?>
 <odoo>
-    <!-- Tree View for Projects -->
-    <record id="view_qctracker_project_tree" model="ir.ui.view">
-        <field name="name">qctracker.project.tree</field>
-        <field name="model">qctracker.project</field>
-        <field name="arch" type="xml">
-            <tree string="Projects">
-                <field name="name"/>
-                <field name="department_id"/>
-                <field name="start_date"/>
-                <field name="end_date"/>
-            </tree>
-        </field>
-    </record>
+    <data>
+        <record id="qctracker_project_view_tree" model="ir.ui.view">
+            <field name="name">qctracker.project.tree.styled</field>
+            <field name="model">qctracker.project</field>
+            <field name="arch" type="xml">
+                <tree decoration-info="status == 'to_do'" decoration-warning="status == 'in_progress'" decoration-success="status == 'done'">
+                    <field name="name" string="Project Name" widget="badge" decoration-success="1"/>
+                    <field name="department_id" string="Department" widget="many2one_button"/>
+                    <field name="employee_id" string="Project Manager" widget="many2one_button"/>
+                    <field name="start_date" string="Start Date"/>
+                    <field name="end_date" string="End Date"/>
+                    <field name="status" string="Status" widget="badge"/>
+                    <field name="progress" string="Progress"/>
+                </tree>
+            </field>
+        </record>
 
-    <!-- Form View for Projects -->
-    <record id="view_qctracker_project_form" model="ir.ui.view">
-        <field name="name">qctracker.project.form</field>
-        <field name="model">qctracker.project</field>
-        <field name="arch" type="xml">
-            <form string="Project">
-                <sheet>
-                    <group>
-                        <field name="name"/>
-                        <field name="department_id"/>
-                        <field name="description"/>
-                        <field name="start_date"/>
-                        <field name="end_date"/>
-                    </group>
-                </sheet>
-            </form>
-        </field>
-    </record>
-
-    <!-- Kanban View for Projects -->
-    <record id="view_qctracker_project_kanban" model="ir.ui.view">
-        <field name="name">qctracker.project.kanban</field>
-        <field name="model">qctracker.project</field>
-        <field name="arch" type="xml">
-            <kanban string="Projects" class="o_kanban_cards o_kanban_stretched o_kanban_animated">
-                <field name="name"/>
-                <field name="department_id"/>
-                <field name="start_date"/>
-                <field name="end_date"/>
-                <templates>
-                    <t t-name="kanban-box">
-                        <div class="o_kanban_record oe_kanban_record_shadow o_kanban_record_hover animated fadeIn">
-                            <div class="o_kanban_record_header">
-                                <strong class="oe_kanban_record_name"><field name="name"/></strong>
-                            </div>
-                            <div class="o_kanban_record_body">
-                                <div><field name="department_id"/></div>
-                                <div><field name="start_date"/> - <field name="end_date"/></div>
-                            </div>
+        <record id="qctracker_project_view_form" model="ir.ui.view">
+            <field name="name">qctracker.project.form.styled</field>
+            <field name="model">qctracker.project</field>
+            <field name="arch" type="xml">
+                <form>
+                    <sheet>
+                        <div class="oe_title">
+                            <h1>
+                                <field name="name" readonly="1"/>
+                            </h1>
                         </div>
-                    </t>
-                </templates>
-            </kanban>
-        </field>
-    </record>
+                        <group>
+                            <group string="Project Information" style="background-color:#f0f8ff;">
+                                <field name="name" string="Project Name" placeholder="Enter project name" style="color:blue;"/>
+                                <field name="description" string="Description" placeholder="Enter description" style="color:green;"/>
+                                <field name="department_id" string="Department" options="{'no_create_edit': True}" style="color:orange;"/>
+                                <field name="employee_id" string="Project Manager" options="{'no_create_edit': True}" style="color:purple;"/>
+                            </group>
+                            <group string="Project Dates &amp; Status" style="background-color:#e6e6fa;">
+                                <field name="start_date" string="Start Date"/>
+                                <field name="end_date" string="End Date"/>
+                                <field name="status" string="Status" widget="radio" options="{'horizontal': true}"/>
+                                <field name="progress" string="Progress"/>
+                            </group>
+                        </group>
+                        <notebook>
+                            <page string="Tasks 📋" style="background-color:#f5f5f5;">
+                                <field name="task_ids" widget="one2many_list" options="{'create': false, 'edit': false}"/>
+                            </page>
+                            <page string="Tags 🏷️" style="background-color:#f0ffff;">
+                                <field name="tag_ids" widget="many2many_tags" options="{'no_create_edit': True}"/>
+                            </page>
+                            <page string="Deliveries 📦" style="background-color:#f0e68c;">
+                                <field name="project_delivery_ids" widget="one2many_list" options="{'create': false, 'edit': false}"/>
+                            </page>
+                        </notebook>
+                    </sheet>
+                    <div class="oe_chatter">
+                        <field name="message_follower_ids" widget="mail_followers"/>
+                        <field name="message_ids" widget="mail_thread"/>
+                    </div>
+                </form>
+            </field>
+        </record>
 
-    <!-- Pivot View for Projects (Detailed Analysis by Department) -->
-    <record id="view_qctracker_project_pivot" model="ir.ui.view">
-        <field name="name">qctracker.project.pivot</field>
-        <field name="model">qctracker.project</field>
-        <field name="arch" type="xml">
-            <pivot string="Project Analysis">
-                <field name="department_id"/>
-                <field name="start_date"/>
-                <field name="end_date"/>
-            </pivot>
-        </field>
-    </record>
+        <record id="qctracker_project_view_kanban" model="ir.ui.view">
+            <field name="name">qctracker.project.kanban.styled</field>
+            <field name="model">qctracker.project</field>
+            <field name="arch" type="xml">
+                <kanban default_group_by="status">
+                    <field name="id" invisible="1"/>
+                    <templates>
+                        <t t-name="kanban-box">
+                            <div class="oe_kanban_global_click" style="border: 2px solid #ddd; padding: 10px; margin: 5px; border-radius: 5px; background-color: #f9f9f9; box-shadow: 2px 2px 5px #ccc;">
+                                <div class="oe_kanban_details">
+                                    <h4 style="color: #333;">
+                                        <a type="open" style="text-decoration: none; color: #007bff;">
+                                            <field name="name"/>
+                                        </a>
+                                    </h4>
+                                    <ul style="list-style-type: none; padding: 0;">
+                                        <li style="margin-bottom: 5px;">
+                                            <i class="fa fa-users" style="color: #008000;"></i> Manager: <field name="employee_id" style="color: #008000;"/>
+                                        </li>
+                                        <li style="margin-bottom: 5px;">
+                                            <i class="fa fa-calendar" style="color: #800080;"></i> End Date: <field name="end_date" style="color: #800080;"/>
+                                        </li>
+                                        <li style="margin-bottom: 5px;">
+                                            <i class="fa fa-tasks" style="color: #000080;"></i> Progress: <field name="progress" style="color: #000080;"/>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </t>
+                    </templates>
+                </kanban>
+            </field>
+        </record>
+
+        <record id="qctracker_project_view_graph" model="ir.ui.view">
+            <field name="name">qctracker.project.graph.styled</field>
+            <field name="model">qctracker.project</field>
+            <field name="arch" type="xml">
+                <graph string="Project Progress" type="pie">
+                    <field name="status" type="row"/>
+                    <field name="progress" type="measure"/>
+                </graph>
+            </field>
+        </record>
+    </data>
 </odoo>

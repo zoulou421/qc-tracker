@@ -160,4 +160,169 @@
         <field name="perm_unlink" eval="1"/>
     </record>
 
+    <!-- Access Rights Tasks Notification (QC Employee) -->
+    <record id="access_qctracker_task_notification" model="ir.model.access">
+    <field name="name">Access to Task Notification (QC Employee)</field>
+    <field name="model_id" ref="model_qctracker_task_notification"/>
+    <field name="group_id" ref="group_qctracker_employee"/>
+    <field name="perm_read" eval="1"/>
+    <field name="perm_write" eval="0"/>
+    <field name="perm_create" eval="0"/>
+    <field name="perm_unlink" eval="0"/>
+</record>
+
+    <!-- Access Rights Tasks Notification (QC Manager) -->
+<record id="access_qctracker_task_notification_manager" model="ir.model.access">
+    <field name="name">Access to Task Notification (QC Manager)</field>
+    <field name="model_id" ref="model_qctracker_task_notification"/>
+    <field name="group_id" ref="group_qctracker_manager"/>
+    <field name="perm_read" eval="1"/>
+    <field name="perm_write" eval="1"/>
+    <field name="perm_create" eval="1"/>
+    <field name="perm_unlink" eval="0"/>
+</record>
+
+    <!-- Access Rights Tasks Notification (QC Admin) -->
+<record id="access_qctracker_task_notification_admin" model="ir.model.access">
+    <field name="name">Access to Task Notification (QC Admin)</field>
+    <field name="model_id" ref="model_qctracker_task_notification"/>
+    <field name="group_id" ref="group_qctracker_admin"/>
+    <field name="perm_read" eval="1"/>
+    <field name="perm_write" eval="1"/>
+    <field name="perm_create" eval="1"/>
+    <field name="perm_unlink" eval="1"/>
+</record>
+
+    <!-- Access Rights Project (QC Employee) -->
+  <record id="access_qctracker_project_employee" model="ir.model.access">
+    <field name="name">Access to Projects (QC Employee)</field>
+    <field name="model_id" ref="model_qctracker_project"/>
+    <field name="group_id" ref="group_qctracker_employee"/>
+    <field name="perm_read" eval="1"/>
+    <field name="perm_write" eval="0"/>
+    <field name="perm_create" eval="0"/>
+    <field name="perm_unlink" eval="0"/>
+</record>
+
+    <!-- Access Rights Project (QC Manager) -->
+<record id="access_qctracker_project_manager" model="ir.model.access">
+    <field name="name">Access to Projects (QC Manager)</field>
+    <field name="model_id" ref="model_qctracker_project"/>
+    <field name="group_id" ref="group_qctracker_manager"/>
+    <field name="perm_read" eval="1"/>
+    <field name="perm_write" eval="1"/>
+    <field name="perm_create" eval="1"/>
+    <field name="perm_unlink" eval="0"/>
+</record>
+
+    <!-- Access Rights Project (QC Admin) -->
+<record id="access_qctracker_project_admin" model="ir.model.access">
+    <field name="name">Access to Projects (QC Admin)</field>
+    <field name="model_id" ref="model_qctracker_project"/>
+    <field name="group_id" ref="group_qctracker_admin"/>
+    <field name="perm_read" eval="1"/>
+    <field name="perm_write" eval="1"/>
+    <field name="perm_create" eval="1"/>
+    <field name="perm_unlink" eval="1"/>
+</record>
+
+     <!-- Access Rights Tag (QC Employee) -->
+ <record id="access_qctracker_tag_employee" model="ir.model.access">
+            <field name="name">Access to Project Tags (QC Employee)</field>
+            <field name="model_id" ref="model_qctracker_tag"/>
+            <field name="group_id" ref="group_qctracker_employee"/>
+            <field name="perm_read" eval="1"/>
+            <field name="perm_write" eval="0"/>
+            <field name="perm_create" eval="0"/>
+            <field name="perm_unlink" eval="0"/>
+        </record>
+
+    <!-- Access Rights Tag (QC Manager) -->
+        <record id="access_qctracker_tag_manager" model="ir.model.access">
+            <field name="name">Access to Project Tags (QC Manager)</field>
+            <field name="model_id" ref="model_qctracker_tag"/>
+            <field name="group_id" ref="group_qctracker_manager"/>
+            <field name="perm_read" eval="1"/>
+            <field name="perm_write" eval="1"/>
+            <field name="perm_create" eval="1"/>
+            <field name="perm_unlink" eval="0"/>
+        </record>
+
+    <!-- Access Rights Tag (QC Admin) -->
+        <record id="access_qctracker_tag_admin" model="ir.model.access">
+            <field name="name">Access to Project Tags (QC Admin)</field>
+            <field name="model_id" ref="model_qctracker_tag"/>
+            <field name="group_id" ref="group_qctracker_admin"/>
+            <field name="perm_read" eval="1"/>
+            <field name="perm_write" eval="1"/>
+            <field name="perm_create" eval="1"/>
+            <field name="perm_unlink" eval="1"/>
+        </record>
+
+    <!-- Access Rights Processes (QC Employee) -->
+<record id="access_qctracker_process_employee" model="ir.model.access">
+        <field name="name">Access to Processes (QC Employee)</field>
+        <field name="model_id" ref="model_qctracker_process"/>
+        <field name="group_id" ref="group_qctracker_employee"/>
+        <field name="perm_read" eval="1"/>
+        <field name="perm_write" eval="0"/>
+        <field name="perm_create" eval="0"/>
+        <field name="perm_unlink" eval="0"/>
+    </record>
+
+    <!-- Access Rights Processes (QC Manager) -->
+    <record id="access_qctracker_process_manager" model="ir.model.access">
+        <field name="name">Access to Processes (QC Manager)</field>
+        <field name="model_id" ref="model_qctracker_process"/>
+        <field name="group_id" ref="group_qctracker_manager"/>
+        <field name="perm_read" eval="1"/>
+        <field name="perm_write" eval="1"/>
+        <field name="perm_create" eval="1"/>
+        <field name="perm_unlink" eval="0"/>
+    </record>
+
+    <!-- Access Rights Processes (QC Admin) -->
+    <record id="access_qctracker_process_admin" model="ir.model.access">
+        <field name="name">Access to Processes (QC Admin)</field>
+        <field name="model_id" ref="model_qctracker_process"/>
+        <field name="group_id" ref="group_qctracker_admin"/>
+        <field name="perm_read" eval="1"/>
+        <field name="perm_write" eval="1"/>
+        <field name="perm_create" eval="1"/>
+        <field name="perm_unlink" eval="1"/>
+    </record>
+
+
+    <!-- Access Rights Sub-Processes (QC Employee) -->
+    <record id="access_qctracker_sub_process_employee" model="ir.model.access">
+        <field name="name">Access to Sub-Processes (QC Employee)</field>
+        <field name="model_id" ref="model_qctracker_sub_process"/>
+        <field name="group_id" ref="group_qctracker_employee"/>
+        <field name="perm_read" eval="1"/>
+        <field name="perm_write" eval="0"/>
+        <field name="perm_create" eval="0"/>
+        <field name="perm_unlink" eval="0"/>
+    </record>
+
+    <!-- Access Rights Sub-Processes (QC Manager) -->
+    <record id="access_qctracker_sub_process_manager" model="ir.model.access">
+        <field name="name">Access to Sub-Processes (QC Manager)</field>
+        <field name="model_id" ref="model_qctracker_sub_process"/>
+        <field name="group_id" ref="group_qctracker_manager"/>
+        <field name="perm_read" eval="1"/>
+        <field name="perm_write" eval="1"/>
+        <field name="perm_create" eval="1"/>
+        <field name="perm_unlink" eval="0"/>
+    </record>
+
+    <!-- Access Rights Sub-Processes (QC Admin) -->
+    <record id="access_qctracker_sub_process_admin" model="ir.model.access">
+        <field name="name">Access to Sub-Processes (QC Admin)</field>
+        <field name="model_id" ref="model_qctracker_sub_process"/>
+        <field name="group_id" ref="group_qctracker_admin"/>
+        <field name="perm_read" eval="1"/>
+        <field name="perm_write" eval="1"/>
+        <field name="perm_create" eval="1"/>
+        <field name="perm_unlink" eval="1"/>
+    </record>
 </odoo>
