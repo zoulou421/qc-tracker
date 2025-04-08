@@ -53,7 +53,7 @@ class QCTrackerProject(models.Model):
     department_id = fields.Many2one('qctracker.department', string='Department')
     start_date = fields.Date(string='Start Date')
     end_date = fields.Date(string='End Date')
-    # employee_id = fields.Many2one('qctracker.employee', string='Project Manager')
+    employee_id = fields.Many2one('qctracker.employee', string='Project Manager')
     task_ids = fields.One2many('qctracker.task', 'project_id', string='Tasks')
     status = fields.Selection([
         ('to_do', 'To Do'),
@@ -64,7 +64,7 @@ class QCTrackerProject(models.Model):
                               store=True)  # Calcule auto de la progression
     tag_ids = fields.Many2many('qctracker.tag', string="Tags")
 
-    #project_delivery_ids = fields.One2many('qctracker.projectdelivery', 'project_id', string='Project Delivery')
+    project_delivery_ids = fields.One2many('qctracker.projectdelivery', 'project_id', string='Project Delivery')
 
     @api.constrains('start_date', 'end_date')
     def _check_dates(self):

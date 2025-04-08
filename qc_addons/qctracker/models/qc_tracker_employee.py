@@ -74,11 +74,11 @@ class QCTrackerEmployee(models.Model):
     rating_employee_ids = fields.One2many('qctracker.employeerating', 'employee_id', 'Ratings')
     gender = fields.Selection([('male', 'Male'), ('female', 'Female')], string='Gender')
     country_id = fields.Many2one('res.country', string='Pays (ID)')
-    #project_ids = fields.One2many('qctracker.project', 'employee_id', string='Projects')
-    # user_id = fields.Many2one('res.users', string='Associated User')
+    project_ids = fields.One2many('qctracker.project', 'employee_id', string='Projects')
+    user_id = fields.Many2one('res.users', string='Associated User')
     project_delivery_ids = fields.One2many('qctracker.projectdelivery','employee_id', string='Project Delivery')
 
-   #  notification_ids = fields.One2many('qctracker.task.notification', 'recipient_id', string='Notifications')
+    notification_ids = fields.One2many('qctracker.task.notification', 'recipient_id', string='Notifications')
 
     country_dynamic = fields.Selection(
         '_get_country_selection', string='Pays (Dynamique)',
