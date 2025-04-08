@@ -49,10 +49,15 @@ Il permet de centraliser les informations relatives aux employés et de facilite
 
 # --- QCTrackerEmployee Model ---
 class QCTrackerEmployee(models.Model):
+<<<<<<< HEAD
     """
     Modèle Odoo représentant un employé.
     Un employé peut appartenir à un département, être un manager, et avoir des compétences.
     """
+=======
+    #_inherit = 'employee.transfer'  # Inherit from EmployeeTransfer model
+    # _inherit = 'employee.transfer'
+>>>>>>> 007482e113be1765a02e12bdbb56096f4a1790b3
     _name = 'qctracker.employee'
     _description = 'An Employee can belong to a Department and be a Manager'
 

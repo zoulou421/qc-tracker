@@ -19,3 +19,14 @@
 #         return http.request.render('qctracker.object', {
 #             'object': obj
 #         })
+from odoo import http
+from odoo.http import request
+
+class DashController(http.Controller):
+
+    @http.route('/dashboard/dash/', type='http', auth='user', website=True)
+    def serve_dash(self, **kwargs):
+        """Affiche une page avec une iframe pour intégrer Dash dans Odoo"""
+        return request.render('qctracker.qctracker_dashboard_view', {
+            'dash_url': "http://127.0.0.1:8050/dash/"
+        })

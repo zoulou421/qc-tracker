@@ -13,6 +13,7 @@
     'website': "https://qualisysconsulting.com/",
     'category': 'Quality Control', # Simplified category
     'version': '0.1',
+<<<<<<< HEAD
     'depends': ['base','web','project','hr','mail'],
     'data': [
         'security/qctracker_security.xml',
@@ -30,6 +31,33 @@
         #'views/qctracker_actions.xml',
         #'views/qctracker_menus.xml',
         #'views/assets.xml',  # Assets (CSS/JS) for the dashboard
+=======
+    'depends': ['base','web','board','mail','project'],
+    'data': [
+        'security/qctracker_security.xml',
+        'security/ir.model.access.csv',
+        'views/qctracker_employee_view.xml',
+        'views/qctracker_project_view.xml',
+        'views/qctracker_task_view.xml',
+        'views/qctracker_sub_task_view.xml',
+        'views/qctracker_employee_rating_view.xml',
+        'views/qctracker_department_view.xml',
+        'views/qctracker_project_delivery_view.xml',
+        'views/qctracker_skill_view.xml',
+        'views/qctracker_sub_task_view.xml',
+        'views/qctracker_actions.xml',
+        'views/qctracker_dashboard_view.xml',
+        # 'views/qctracker_actions.xml',
+        'views/dashboard_v0.xml',
+       
+
+        
+        
+        'views/qctracker_menus.xml',
+        #  'views/assets.xml',
+        
+        # 'views/assets.xml',  # Assets (CSS/JS) for the dashboard
+>>>>>>> 007482e113be1765a02e12bdbb56096f4a1790b3
         # 'views/views.xml',
         #'views/email_templates.xml',
         # 'views/templates.xml', # keep if needed otherwise remove.
@@ -45,10 +73,14 @@
             #'qctracker/static/src/js/dash.js',
             #'https://cdn.jsdelivr.net/npm/chart.js',
             #'qctracker/static/src/js/helper.js',
-            #'qctracker/static/src/js/dashboard.js',
-            #'qctracker/static/src/xml/dashboard.xml',
+            #'qctracker/static/src/js/dashboard.js'
         ],
+    #     'web.assets_qweb': [
+    #     'qctracker/static/src/xml/dashboard_templates.xml',
+    # ],
+
     },
+    
     'images': [],
     'installable': True,
     'application': True,
