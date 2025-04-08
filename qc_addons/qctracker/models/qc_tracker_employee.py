@@ -55,6 +55,7 @@ Ce modèle représente un employé au sein de l'application Odoo. Il permet de g
 Ce modèle est essentiel pour la gestion des employés dans l'application Odoo. Il centralise les informations des employés et facilite la gestion des ressources humaines.
 """
 
+
 # --- QCTrackerEmployee Model ---
 class QCTrackerEmployee(models.Model):
     """
@@ -83,7 +84,7 @@ class QCTrackerEmployee(models.Model):
     country_id = fields.Many2one('res.country', string='Pays (ID)')
     project_ids = fields.One2many('qctracker.project', 'employee_id', string='Projets')
     user_id = fields.Many2one('res.users', string='Utilisateur Associé')
-    project_delivery_ids = fields.One2many('qctracker.projectdelivery','employee_id', string='Livraisons de Projet')
+    project_delivery_ids = fields.One2many('qctracker.projectdelivery', 'employee_id', string='Livraisons de Projet')
 
     notification_ids = fields.One2many('qctracker.task.notification', 'recipient_id', string='Notifications')
 

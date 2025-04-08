@@ -2,81 +2,63 @@
 <odoo>
     <data>
         <record id="qctracker_department_view_tree" model="ir.ui.view">
-            <field name="name">qctracker.department.tree.styled</field>
+            <field name="name">qctracker.department.tree</field>
             <field name="model">qctracker.department</field>
             <field name="arch" type="xml">
-                <tree decoration-info="employee_count &lt; 5" decoration-warning="employee_count &gt;= 5 and employee_count &lt; 10" decoration-danger="employee_count &gt;= 10">
-                    <field name="name" string="Department Name 🏢" widget="badge" decoration-success="1" style="font-weight: bold;"/>
-                    <field name="employee_count" string="Employees 👥" style="color: #008000;"/>
-                    <field name="active" string="Active ✅" widget="boolean_toggle" style="color: #800080;"/>
+                <tree>
+                    <field name="name"/>
+                    <field name="employee_count"/>
+                    <field name="active"/>
                 </tree>
             </field>
         </record>
 
         <record id="qctracker_department_view_form" model="ir.ui.view">
-            <field name="name">qctracker.department.form.styled</field>
+            <field name="name">qctracker.department.form</field>
             <field name="model">qctracker.department</field>
             <field name="arch" type="xml">
                 <form>
                     <sheet>
-                        <div class="oe_title">
-                            <h1 style="color: #007bff; text-shadow: 2px 2px 4px #ccc;">
-                                <field name="name" readonly="1"/>
-                            </h1>
-                        </div>
                         <group>
-                            <group string="Department Information ℹ️" style="background-color:#f0f8ff;">
-                                <field name="name" string="Department Name 🏷️" placeholder="Enter department name" style="color:blue;"/>
-                                <field name="active" string="Active ✅" widget="boolean_toggle" style="color: #800080;"/>
-                                <field name="employee_count" string="Employees 👥" style="color:green;"/>
-                            </group>
-                            <group string="Associations 🔗" style="background-color:#e6e6fa;">
-                                <field name="employee_ids" widget="many2many_tags" options="{'no_create_edit': True}" style="color: #008000;"/>
-                                <field name="project_ids" widget="many2many_tags" options="{'no_create_edit': True}" style="color: #000080;"/>
-                            </group>
+                            <field name="name"/>
+                            <field name="employee_ids" widget="many2many_tags"/>
+                            <field name="project_ids" widget="many2many_tags"/>
+                            <field name="active"/>
                         </group>
-                        <notebook>
-                            <page string="Employees 👥" style="background-color:#f5f5f5;">
-                                <field name="employee_ids" widget="one2many_list" options="{'create': false, 'edit': false}"/>
-                            </page>
-                            <page string="Projects 🚀-&gt;🏢" style="background-color:#fff0f5;">
-                                <field name="project_ids" widget="one2many_list" options="{'create': false, 'edit': false}"/>
-                            </page>
-                        </notebook>
                     </sheet>
                 </form>
             </field>
         </record>
 
         <record id="qctracker_department_view_kanban" model="ir.ui.view">
-            <field name="name">qctracker.department.kanban.styled</field>
+            <field name="name">qctracker.department.kanban</field>
             <field name="model">qctracker.department</field>
             <field name="arch" type="xml">
                 <kanban>
                     <field name="id" invisible="1"/>
                     <templates>
                         <t t-name="kanban-box">
-                            <div class="oe_kanban_global_click" style="border: 2px solid #ddd; padding: 10px; margin: 5px; border-radius: 5px; background-color: #f9f9f9; box-shadow: 2px 2px 5px #ccc;">
-                                <div class="oe_kanban_details">
-                                    <h4 style="color: #333;">
-                                        <a type="open" style="text-decoration: none; color: #007bff;">
-                                            <field name="name"/>
-                                        </a>
-                                    </h4>
-                                    <ul style="list-style-type: none; padding: 0;">
-                                        <li style="margin-bottom: 5px;">
-                                            <i class="fa fa-users" style="color: #008000;"></i> Employees: <field name="employee_count" style="color: #008000;"/>
-                                        </li>
-                                        <li style="margin-bottom: 5px;">
-                                            <i class="fa fa-check-circle" style="color: #800080;"></i> Active: <field name="active" style="color: #800080;"/>
-                                        </li>
-                                    </ul>
+                            <div class="oe_kanban_global_click">
+                                <div>
+                                    <strong><field name="name"/></strong>
+                                </div>
+                                <div>
+                                    Employees: <field name="employee_count"/>
+                                </div>
+                                <div>
+                                    Active: <field name="active"/>
                                 </div>
                             </div>
                         </t>
                     </templates>
                 </kanban>
             </field>
+        </record>
+
+        <record id="qctracker_department_action" model="ir.actions.act_window">
+            <field name="name">Departments</field>
+            <field name="res_model">qctracker.department</field>
+            <field name="view_mode">tree,form,kanban</field>
         </record>
     </data>
 </odoo>

@@ -1,86 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
 <odoo>
-    <!-- Tree View for Skills -->
-    <record id="view_qctracker_skill_tree" model="ir.ui.view">
-        <field name="name">qctracker.skill.tree</field>
-        <field name="model">qctracker.skill</field>
-        <field name="arch" type="xml">
-            <tree>
-                <field name="name"/>
-                <field name="category"/>
-                <field name="active"/>
-            </tree>
-        </field>
-    </record>
+    <data>
+        <record id="view_qctracker_skill_category_tree" model="ir.ui.view">
+            <field name="name">qctracker.skill.category.tree</field>
+            <field name="model">qctracker.skill.category</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="name" string="📂 Catégorie"/>
+                </tree>
+            </field>
+        </record>
 
-    <!-- Form View for Skills with Animations -->
-    <record id="view_qctracker_skill_form" model="ir.ui.view">
-        <field name="name">qctracker.skill.form</field>
-        <field name="model">qctracker.skill</field>
-        <field name="arch" type="xml">
-            <form string="Skill Details" class="o_form_sheet o_form_sheet_width_8">
-                <sheet>
-                    <group>
-                        <h2><strong>Skill Details</strong></h2>
-                        <div class="oe_kanban_details animated fadeIn">
-                            <field name="name" class="oe_form_field"/>
-                            <field name="description" class="oe_form_field"/>
-                            <field name="category" class="oe_form_field"/>
-                            <field name="active" class="oe_form_field"/>
-                        </div>
-                    </group>
-                </sheet>
-            </form>
-        </field>
-    </record>
+        <record id="view_qctracker_skill_category_form" model="ir.ui.view">
+            <field name="name">qctracker.skill.category.form</field>
+            <field name="model">qctracker.skill.category</field>
+            <field name="arch" type="xml">
+                <form>
+                    <sheet>
+                        <group>
+                            <field name="name" string="📂 Catégorie"/>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
 
-    <!-- Kanban View for Skills with Animations -->
-    <record id="view_qctracker_skill_kanban" model="ir.ui.view">
-        <field name="name">qctracker.skill.kanban</field>
-        <field name="model">qctracker.skill</field>
-        <field name="arch" type="xml">
-            <kanban class="o_kanban_cards o_kanban_stretched o_kanban_animated">
-                <field name="name"/>
-                <field name="category"/>
-                <field name="active"/>
-                <templates>
-                    <t t-name="kanban-box">
-                        <div class="o_kanban_record oe_kanban_record_shadow o_kanban_record_hover animated fadeIn">
-                            <div class="o_kanban_record_header">
-                                <strong class="oe_kanban_record_name"><field name="name"/></strong>
-                            </div>
-                            <div class="o_kanban_record_body">
-                                <div><field name="category"/></div>
-                                <div><field name="active"/></div>
-                            </div>
-                        </div>
-                    </t>
-                </templates>
-            </kanban>
-        </field>
-    </record>
+        <record id="view_qctracker_skill_tree" model="ir.ui.view">
+            <field name="name">qctracker.skill.tree</field>
+            <field name="model">qctracker.skill</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="name" string="🛠️ Compétence"/>
+                    <field name="category_id" string="📂 Catégorie"/>
+                    <field name="level" string="📊 Niveau"/>
+                    <field name="last_used" string="📅 Dernière Utilisation"/>
+                    <field name="active" string="✅ Actif"/>
+                </tree>
+            </field>
+        </record>
 
-    <!-- Graph View for Skills (Visualizing Active Skills by Category) -->
-    <!--record id="view_qctracker_skill_graph" model="ir.ui.view">
-        <field name="name">qctracker.skill.graph</field>
-        <field name="model">qctracker.skill</field>
-        <field name="arch" type="xml">
-            <graph>
-                <field name="category" type="dimension"/>
-                <field name="active" type="measure"/>
-            </graph>
-        </field>
-    </record-->
+        <record id="view_qctracker_skill_form" model="ir.ui.view">
+            <field name="name">qctracker.skill.form</field>
+            <field name="model">qctracker.skill</field>
+            <field name="arch" type="xml">
+                <form>
+                    <sheet>
+                        <group>
+                            <field name="name" string="🛠️ Compétence"/>
+                            <field name="category_id" string="📂 Catégorie"/>
+                            <field name="level" string="📊 Niveau"/>
+                            <field name="last_used" string="📅 Dernière Utilisation"/>
+                            <field name="active" string="✅ Actif"/>
+                            <field name="employee_ids" widget="many2many_tags" string="🧑‍💼 Employés"/>
+                        </group>
+                        <field name="description" string="📝 Description"/>
+                    </sheet>
+                </form>
+            </field>
+        </record>
 
-    <!-- Pivot View for Skills (Detailed Skill Analysis by Category) -->
-    <record id="view_qctracker_skill_pivot" model="ir.ui.view">
-        <field name="name">qctracker.skill.pivot</field>
-        <field name="model">qctracker.skill</field>
-        <field name="arch" type="xml">
-            <pivot>
-                <field name="category"/>
-                <field name="active"/>
-                <field name="name"/>
-            </pivot>
-        </field>
-    </record>
+        <record id="action_qctracker_skill_category" model="ir.actions.act_window">
+            <field name="name">Catégories de Compétences 📂</field>
+            <field name="res_model">qctracker.skill.category</field>
+            <field name="view_mode">tree,form</field>
+            <field name="target">current</field>
+        </record>
+
+        <record id="action_qctracker_skill" model="ir.actions.act_window">
+            <field name="name">Compétences 🛠️</field>
+            <field name="res_model">qctracker.skill</field>
+            <field name="view_mode">tree,form</field>
+            <field name="target">current</field>
+        </record>
+
+        <menuitem id="menu_qctracker_skill_category" name="Catégories de Compétences 📂" parent="menu_qctracker_root" action="action_qctracker_skill_category" sequence="100"/>
+        <menuitem id="menu_qctracker_skill" name="Compétences 🛠️" parent="menu_qctracker_root" action="action_qctracker_skill" sequence="110"/>
+    </data>
 </odoo>

@@ -1,101 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
 <odoo>
-    <!-- Tree View for QCTrackerEmployeeRating -->
-    <record id="view_qctracker_employee_rating_tree" model="ir.ui.view">
-        <field name="name">qctracker.employee.rating.tree</field>
-        <field name="model">qctracker.employeerating</field>
-        <field name="arch" type="xml">
-            <tree>
-                <field name="employee_id"/>
-                <field name="project_id"/>
-                <field name="manager_id"/>
-                <field name="rating"/>
-                <field name="on_time"/>
-                <field name="evaluation_date"/>
-                <field name="comments"/>
-            </tree>
-        </field>
-    </record>
+    <data>
+        <record id="qctracker_employeerating_view_tree" model="ir.ui.view">
+            <field name="name">qctracker.employeerating.tree.styled</field>
+            <field name="model">qctracker.employeerating</field>
+            <field name="arch" type="xml">
+                <tree decoration-info="rating &lt; 5" decoration-warning="rating &gt;= 5 and rating &lt; 8" decoration-danger="rating &gt;= 8">
+                    <field name="employee_id" string="👤 Employé" widget="many2one_button"/>
+                    <field name="project_id" string="🚀 Projet" widget="many2one_button"/>
+                    <field name="rating" string="⭐ Note" widget="progressbar" options="{'max_value': 10}"/>
+                    <field name="on_time" string="⏱️ À l'heure" widget="boolean_toggle"/>
+                    <field name="evaluation_date" string="📅 Date d'évaluation" widget="date" options='{"format": "dd/MM/yyyy"}'/>
+                    <field name="state" string="📝 Statut" widget="badge" decoration-success="state == 'submitted'" decoration-muted="state == 'draft'"/>
+                    <field name="manager_id" string="💼 Manager" widget="many2one_button"/>
+                </tree>
+            </field>
+        </record>
 
-    <!-- Form View for QCTrackerEmployeeRating -->
-    <record id="view_qctracker_employee_rating_form" model="ir.ui.view">
-        <field name="name">qctracker.employee.rating.form</field>
-        <field name="model">qctracker.employeerating</field>
-        <field name="arch" type="xml">
-            <form>
-                <sheet>
-                    <group>
-                        <field name="employee_id"/>
-                        <field name="project_id"/>
-                        <field name="manager_id"/>
-                        <field name="rating"/>
-                        <field name="on_time"/>
-                        <field name="comments"/>
-                        <field name="evaluation_date"/>
-                    </group>
-                    <footer>
-                        <button name="action_submit" type="object" string="Submit" class="oe_highlight"/>
-                        <button name="action_reset" type="object" string="Reset" class="oe_link"/>
-                    </footer>
-                </sheet>
-            </form>
-        </field>
-    </record>
+        <record id="qctracker_employeerating_view_form" model="ir.ui.view">
+            <field name="name">qctracker.employeerating.form.styled</field>
+            <field name="model">qctracker.employeerating</field>
+            <field name="arch" type="xml">
+                <form>
+                    <sheet>
+                        <div class="oe_title">
+                            <h1>
+                                <field name="employee_id" readonly="1"/>
+                            </h1>
+                        </div>
+                        <group>
+                            <group string="ℹ️ Informations de l'évaluation" class="oe_title">
+                                <field name="employee_id" string="👤 Employé" options="{'no_create_edit': True}"/>
+                                <field name="project_id" string="🚀 Projet" options="{'no_create_edit': True}"/>
+                                <field name="rating" string="⭐ Note" widget="radio"/>
+                                <field name="on_time" string="⏱️ À l'heure" widget="boolean_toggle"/>
+                                <field name="evaluation_date" string="📅 Date d'évaluation" widget="date" options='{"format": "dd/MM/yyyy"}'/>
+                                <field name="state" string="📝 Statut" widget="selection"/>
+                                <field name="manager_id" string="💼 Manager" options="{'no_create_edit': True}"/>
+                            </group>
+                            <group string="💬 Commentaires" class="oe_title">
+                                <field name="comments" string="💬 Commentaires" widget="html"/>
+                            </group>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
 
-    <!-- Kanban View for QCTrackerEmployeeRating -->
-    <!--record id="view_qctracker_employee_rating_kanban" model="ir.ui.view">
-        <field name="name">qctracker.employee.rating.kanban</field>
-        <field name="model">qctracker.employeerating</field>
-        <field name="arch" type="xml">
-            <kanban>
-                <field name="employee_id"/>
-                <field name="project_id"/>
-                <field name="rating"/>
-                <field name="on_time"/>
-                <templates>
-                    <t t-name="kanban-box">
-                        <div class="o_kanban_record">
-                            <div class="o_kanban_details">
-                                <strong><field name="employee_id"/></strong>
-                                <div><field name="rating"/></div>
-                                <div t-if="record.on_time.raw_value">
-                                    <span class="o_label o_label_success">On Time</span>
-                                </div>
-                                <div t-if="not record.on_time.raw_value">
-                                    <span class="o_label o_label_danger">Delayed</span>
+        <record id="qctracker_employeerating_view_kanban" model="ir.ui.view">
+            <field name="name">qctracker.employeerating.kanban.styled</field>
+            <field name="model">qctracker.employeerating</field>
+            <field name="arch" type="xml">
+                <kanban>
+                    <field name="id" invisible="1"/>
+                    <templates>
+                        <t t-name="kanban-box">
+                            <div class="oe_kanban_global_click">
+                                <div class="oe_kanban_details">
+                                    <h4>
+                                        <a type="open">
+                                            <field name="employee_id"/>
+                                        </a>
+                                    </h4>
+                                    <ul>
+                                        <li><i class="fa fa-star" style="color: #008000;"></i> ⭐ Note: <field name="rating"/></li>
+                                        <li><i class="fa fa-clock-o" style="color: #000080;"></i> ⏱️ À l'heure: <field name="on_time"/></li>
+                                        <li><i class="fa fa-calendar" style="color: #000000;"></i> 📅 Date: <field name="evaluation_date" widget="date" options='{"format": "dd/MM/yyyy"}'/></li>
+                                    </ul>
                                 </div>
                             </div>
-                        </div>
-                    </t>
-                </templates>
-            </kanban>
-        </field>
-    </record-->
-
-    <!-- Pivot View for QCTrackerEmployeeRating -->
-    <!--record id="view_qctracker_employee_rating_pivot" model="ir.ui.view">
-        <field name="name">qctracker.employee.rating.pivot</field>
-        <field name="model">qctracker.employeerating</field>
-        <field name="arch" type="xml">
-            <pivot>
-                <field name="employee_id" type="row"/>
-                <field name="rating" type="column"/>
-                <field name="evaluation_date" type="measure"/>
-                <field name="on_time" type="measure"/>
-            </pivot>
-        </field>
-    </record-->
-
-    <!-- Graph View for QCTrackerEmployeeRating -->
-    <record id="view_qctracker_employee_rating_graph" model="ir.ui.view">
-        <field name="name">qctracker.employee.rating.graph</field>
-        <field name="model">qctracker.employeerating</field>
-        <field name="arch" type="xml">
-            <graph>
-                <field name="rating" type="row"/>
-                <field name="on_time" type="measure"/>
-                <field name="evaluation_date" type="column"/>
-                <field name="employee_id" type="measure"/>
-            </graph>
-        </field>
-    </record>
+                        </t>
+                    </templates>
+                </kanban>
+            </field>
+        </record>
+    </data>
 </odoo>

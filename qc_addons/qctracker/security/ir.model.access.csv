@@ -81,3 +81,9 @@ id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
 access_qctracker_sub_process,Access to Sub-Processes (QC Employee),model_qctracker_sub_process,group_qctracker_employee,1,0,0,0
 access_qctracker_sub_process_manager,Access to Sub-Processes (QC Manager),model_qctracker_sub_process,group_qctracker_manager,1,1,1,0
 access_qctracker_sub_process_admin,Access to Sub-Processes (QC Admin),model_qctracker_sub_process,group_qctracker_admin,1,1,1,1
+
+# Droits d'accès pour le modèle qctracker.skill.category
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_qctracker_skill_category,Access to Skill Category (QC Employee),model_qctracker_skill_category,group_qctracker_employee,1,0,0,0
+access_qctracker_skill_category_manager,Access to Skill Category (QC Manager),model_qctracker_skill_category,group_qctracker_manager,1,1,1,0
+access_qctracker_skill_category_admin,Access to Skill Category (QC Admin),model_qctracker_skill_category,group_qctracker_admin,1,1,1,1

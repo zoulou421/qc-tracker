@@ -52,7 +52,7 @@ class QCTrackerEmployeeRating(models.Model):
     _description = 'An Employee_Rating is given by a Manager to evaluate an Employee'
 
     employee_id = fields.Many2one('qctracker.employee', string='Employee')
-    # project_id = fields.Many2one('qctracker.project', string='Project')
+    project_id = fields.Many2one('qctracker.project', string='Project')
     rating = fields.Integer(string='Rating', default=0, help='Evaluation from 0 to 10')
     on_time = fields.Boolean(string='On Time')
     comments = fields.Text(string='Comments')
