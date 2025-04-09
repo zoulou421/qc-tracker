@@ -75,4 +75,11 @@
         <field name="view_mode">tree,form</field>
         <field name="target">current</field>
     </record>
+
+    <record id="action_qctracker_projectdelivery" model="ir.actions.act_window">
+            <field name="name">Livraisons de Projets ✅</field>
+            <field name="res_model">qctracker.projectdelivery</field>
+            <field name="view_mode">tree,form</field>
+            <field name="target">current</field>
+        </record>
 </odoo>

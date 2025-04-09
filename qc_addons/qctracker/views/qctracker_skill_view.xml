@@ -65,15 +65,5 @@
             <field name="view_mode">tree,form</field>
             <field name="target">current</field>
         </record>
-
-        <record id="action_qctracker_skill" model="ir.actions.act_window">
-            <field name="name">Compétences 🛠️</field>
-            <field name="res_model">qctracker.skill</field>
-            <field name="view_mode">tree,form</field>
-            <field name="target">current</field>
-        </record>
-
-        <menuitem id="menu_qctracker_skill_category" name="Catégories de Compétences 📂" parent="menu_qctracker_root" action="action_qctracker_skill_category" sequence="100"/>
-        <menuitem id="menu_qctracker_skill" name="Compétences 🛠️" parent="menu_qctracker_root" action="action_qctracker_skill" sequence="110"/>
     </data>
 </odoo>

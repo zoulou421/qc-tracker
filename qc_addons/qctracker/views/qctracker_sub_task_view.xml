@@ -34,14 +34,5 @@
                 </form>
             </field>
         </record>
-
-        <record id="action_qctracker_subtask" model="ir.actions.act_window">
-            <field name="name">Sous-Tâches 🧩</field>
-            <field name="res_model">qctracker.subtask</field>
-            <field name="view_mode">tree,form</field>
-            <field name="target">current</field>
-        </record>
-
-        <menuitem id="menu_qctracker_subtask" name="Sous-Tâches 🧩" parent="menu_qctracker_root" action="action_qctracker_subtask" sequence="70"/>
     </data>
 </odoo>

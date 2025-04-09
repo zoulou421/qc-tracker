@@ -44,5 +44,9 @@
         <menuitem id="menu_qctracker_process_management" name="Gestion des Processus 🔄" parent="menu_qctracker_root" sequence="40"/>
         <menuitem id="menu_qctracker_process" name="Processus 🔄" parent="menu_qctracker_process_management" action="action_qctracker_process" sequence="10"/>
         <menuitem id="menu_qctracker_sub_process" name="Sous-Processus 📄" parent="menu_qctracker_process_management" action="action_qctracker_sub_process" sequence="20"/>
+
+         <menuitem id="menu_qctracker_projectdelivery" name="Livraisons de Projets ✅"
+                  parent="menu_qctracker_root" action="action_qctracker_projectdelivery" sequence="90"/>
+
     </data>
 </odoo>
