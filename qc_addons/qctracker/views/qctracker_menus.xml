@@ -1,5 +1,5 @@
 <odoo>
-    <data>
+    <!--data>
         <menuitem id="menu_qctracker_root" name="QC Tracker 📊" sequence="10"/>
 
         <menuitem id="menu_qctracker_employee" name="Employés 👥" parent="menu_qctracker_root" action="action_qctracker_employee" sequence="10"/>
@@ -23,5 +23,26 @@
         <menuitem id="menu_qctracker_skill" name="Compétences 🛠️" parent="menu_qctracker_root" action="action_qctracker_skill" sequence="100"/>
 
         <menuitem id="menu_qctracker_skillrating" name="Évaluations de Compétences ⭐" parent="menu_qctracker_root" action="action_qctracker_skillrating" sequence="110"/>
+    </data-->
+
+    <data>
+        <menuitem id="menu_qctracker_root" name="QC Tracker 📊" sequence="10"/>
+
+        <menuitem id="menu_qctracker_employee_management" name="Gestion des Employés 🧑‍💼" parent="menu_qctracker_root" sequence="20"/>
+        <menuitem id="menu_qctracker_employee" name="Employés 👥" parent="menu_qctracker_employee_management" action="action_qctracker_employee" sequence="10"/>
+        <menuitem id="menu_qctracker_department" name="Départements 🏢" parent="menu_qctracker_employee_management" action="action_qctracker_department" sequence="20"/>
+        <menuitem id="menu_qctracker_employeerating" name="Évaluations d'Employés ⭐" parent="menu_qctracker_employee_management" action="action_qctracker_employeerating" sequence="30"/>
+        <menuitem id="menu_qctracker_skill_category" name="Catégories de Compétences 📂" parent="menu_qctracker_employee_management" action="action_qctracker_skill_category" sequence="40"/>
+        <menuitem id="menu_qctracker_skill" name="Compétences 🛠️" parent="menu_qctracker_employee_management" action="action_qctracker_skill" sequence="50"/>
+        <menuitem id="menu_qctracker_skillrating" name="Évaluations de Compétences ⭐" parent="menu_qctracker_employee_management" action="action_qctracker_skillrating" sequence="60"/>
+
+        <menuitem id="menu_qctracker_task_management" name="Gestion des Tâches 📋" parent="menu_qctracker_root" sequence="30"/>
+        <menuitem id="menu_qctracker_project" name="Projets 🚀" parent="menu_qctracker_task_management" action="action_qctracker_project" sequence="10"/>
+        <menuitem id="menu_qctracker_task" name="Tâches 📋" parent="menu_qctracker_task_management" action="action_qctracker_task" sequence="20"/>
+        <menuitem id="menu_qctracker_subtask" name="Sous-Tâches 🧩" parent="menu_qctracker_task_management" action="action_qctracker_subtask" sequence="30"/>
+
+        <menuitem id="menu_qctracker_process_management" name="Gestion des Processus 🔄" parent="menu_qctracker_root" sequence="40"/>
+        <menuitem id="menu_qctracker_process" name="Processus 🔄" parent="menu_qctracker_process_management" action="action_qctracker_process" sequence="10"/>
+        <menuitem id="menu_qctracker_sub_process" name="Sous-Processus 📄" parent="menu_qctracker_process_management" action="action_qctracker_sub_process" sequence="20"/>
     </data>
 </odoo>
