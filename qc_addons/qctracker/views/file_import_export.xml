@@ -1,0 +1,235 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_workflow_hierarchy_form" model="ir.ui.view">
+        <field name="name">workflow.hierarchy.form</field>
+        <field name="model">workflow.hierarchy</field>
+        <field name="arch" type="xml">
+            <form string="Workflow Hierarchy (Many2many)">
+                <sheet>
+                    <group>
+                        <field name="name" placeholder="Ex: Entrée de workflow multi-domaines"/>
+                        <field name="domain_ids" widget="many2many_tags" />
+                        <field name="process_ids" widget="many2many_tags" />
+                        <field name="sub_process_ids" widget="many2many_tags" />
+                        <field name="activity_ids" widget="many2many_tags" />
+                        <field name="procedure_ids" widget="many2many_tags" />
+                        <field name="deliverable_ids" widget="many2many_tags" />
+                        <field name="task_formulation_ids" widget="many2many_tags" />
+                        <field name="notes" placeholder="Ajoutez des notes ici..."/>
+                        <field name="active" widget="boolean_toggle"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="view_workflow_hierarchy_tree" model="ir.ui.view">
+        <field name="name">workflow.hierarchy.tree</field>
+        <field name="model">workflow.hierarchy</field>
+        <field name="arch" type="xml">
+            <tree string="Workflow Hierarchy (Many2many)">
+                <field name="name"/>
+                <field name="domain_ids" widget="many2many_tags"/>
+                <field name="process_ids" widget="many2many_tags"/>
+                <field name="sub_process_ids" widget="many2many_tags"/>
+                <field name="activity_ids" widget="many2many_tags"/>
+                <field name="procedure_ids" widget="many2many_tags" />
+                <field name="deliverable_ids" widget="many2many_tags" />
+                <field name="task_formulation_ids" widget="many2many_tags" />
+                <field name="active" widget="boolean_toggle"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="view_workflow_domain_form" model="ir.ui.view">
+        <field name="name">workflow.domain.form</field>
+        <field name="model">workflow.domain</field>
+        <field name="arch" type="xml">
+            <form string="Domaine">
+                <sheet>
+                    <group>
+                        <field name="name"/>
+                        <field name="process_ids" widget="many2many_tags"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="view_workflow_domain_tree" model="ir.ui.view">
+        <field name="name">workflow.domain.tree</field>
+        <field name="model">workflow.domain</field>
+        <field name="arch" type="xml">
+            <tree string="Domaines">
+                <field name="name"/>
+                <field name="process_ids" widget="many2many_tags"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="view_workflow_process_form" model="ir.ui.view">
+        <field name="name">workflow.process.form</field>
+        <field name="model">workflow.process</field>
+        <field name="arch" type="xml">
+            <form string="Processus">
+                <sheet>
+                    <group>
+                        <field name="name"/>
+                        <field name="domain_ids" widget="many2many_tags"/>
+                        <field name="sub_process_ids" widget="many2many_tags"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="view_workflow_process_tree" model="ir.ui.view">
+        <field name="name">workflow.process.tree</field>
+        <field name="model">workflow.process</field>
+        <field name="arch" type="xml">
+            <tree string="Processus">
+                <field name="name"/>
+                <field name="domain_ids" widget="many2many_tags"/>
+                <field name="sub_process_ids" widget="many2many_tags"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="view_workflow_subprocess_form" model="ir.ui.view">
+        <field name="name">workflow.subprocess.form</field>
+        <field name="model">workflow.subprocess</field>
+        <field name="arch" type="xml">
+            <form string="Sous-processus">
+                <sheet>
+                    <group>
+                        <field name="name"/>
+                        <field name="process_ids" widget="many2many_tags"/>
+                        <field name="activity_ids" widget="many2many_tags"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="view_workflow_subprocess_tree" model="ir.ui.view">
+        <field name="name">workflow.subprocess.tree</field>
+        <field name="model">workflow.subprocess</field>
+        <field name="arch" type="xml">
+            <tree string="Sous-processus">
+                <field name="name"/>
+                <field name="process_ids" widget="many2many_tags"/>
+                <field name="activity_ids" widget="many2many_tags"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="view_workflow_activity_form" model="ir.ui.view">
+        <field name="name">workflow.activity.form</field>
+        <field name="model">workflow.activity</field>
+        <field name="arch" type="xml">
+            <form string="Activité">
+                <sheet>
+                    <group>
+                        <field name="name"/>
+                        <field name="sub_process_ids" widget="many2many_tags"/>
+                        <field name="procedure_ids" widget="many2many_tags"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="view_workflow_activity_tree" model="ir.ui.view">
+        <field name="name">workflow.activity.tree</field>
+        <field name="model">workflow.activity</field>
+        <field name="arch" type="xml">
+            <tree string="Activités">
+                <field name="name"/>
+                <field name="sub_process_ids" widget="many2many_tags"/>
+                <field name="procedure_ids" widget="many2many_tags"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="view_workflow_procedure_form" model="ir.ui.view">
+        <field name="name">workflow.procedure.form</field>
+        <field name="model">workflow.procedure</field>
+        <field name="arch" type="xml">
+            <form string="Procédure">
+                <sheet>
+                    <group>
+                        <field name="name"/>
+                        <field name="activity_ids" widget="many2many_tags"/>
+                        <field name="deliverable_ids" widget="many2many_tags"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="view_workflow_procedure_tree" model="ir.ui.view">
+        <field name="name">workflow.procedure.tree</field>
+        <field name="model">workflow.procedure</field>
+        <field name="arch" type="xml">
+            <tree string="Procédures">
+                <field name="name"/>
+                <field name="activity_ids" widget="many2many_tags"/>
+                <field name="deliverable_ids" widget="many2many_tags"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="view_workflow_deliverable_form" model="ir.ui.view">
+        <field name="name">workflow.deliverable.form</field>
+        <field name="model">workflow.deliverable</field>
+        <field name="arch" type="xml">
+            <form string="Livrable">
+                <sheet>
+                    <group>
+                        <field name="name"/>
+                        <field name="procedure_ids" widget="many2many_tags"/>
+                        <field name="task_formulation_ids" widget="many2many_tags"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="view_workflow_deliverable_tree" model="ir.ui.view">
+        <field name="name">workflow.deliverable.tree</field>
+        <field name="model">workflow.deliverable</field>
+        <field name="arch" type="xml">
+            <tree string="Livrables">
+                <field name="name"/>
+                <field name="procedure_ids" widget="many2many_tags"/>
+                <field name="task_formulation_ids" widget="many2many_tags"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="view_workflow_task_formulation_form" model="ir.ui.view">
+        <field name="name">workflow.task.formulation.form</field>
+        <field name="model">workflow.task.formulation</field>
+        <field name="arch" type="xml">
+            <form string="Formulation de Tâches">
+                <sheet>
+                    <group>
+                        <field name="name"/>
+                        <field name="deliverable_ids" widget="many2many_tags"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="view_workflow_task_formulation_tree" model="ir.ui.view">
+        <field name="name">workflow.task.formulation.tree</field>
+        <field name="model">workflow.task.formulation</field>
+        <field name="arch" type="xml">
+            <tree string="Formulations de Tâches">
+                <field name="name"/>
+                <field name="deliverable_ids" widget="many2many_tags"/>
+            </tree>
+        </field>
+    </record>
+</odoo>

@@ -51,7 +51,6 @@ Ce modèle représente un employé au sein de l'application Odoo. Il permet de g
 * Gestion des notifications pour les employés.
 
 ===== Utilisation =====
-
 Ce modèle est essentiel pour la gestion des employés dans l'application Odoo. Il centralise les informations des employés et facilite la gestion des ressources humaines.
 """
 
@@ -64,23 +63,37 @@ class QCTrackerEmployee(models.Model):
     """
     _name = 'qctracker.employee'
     _description = 'Un employé peut appartenir à un département et être un manager'
+    _inherit = ['mail.thread']
 
-    name = fields.Char(string='Nom Complet', compute='_compute_full_name', store=True)
+    _sql_constraints = [
+        ('email_unique', 'UNIQUE(email)', 'L\'adresse e-mail doit être unique.')
+    ]
+
+    #employee_id = fields.Many2one('hr.employee',string='Employee')
+    employee_id = fields.Many2one('hr.employee', string='Employé HR', required=True, ondelete='restrict')
+    #image_1920 = fields.Binary(string='Profile Image', attachment=True)  # Added for profile images
+    image_1920 = fields.Binary(string='Profile Image', related='employee_id.image_1920')
+    name = fields.Char(string='Nom Complet', related='employee_id.name')
     first_name = fields.Char(string='Prénom', required=True, size=256)
+    # first_name = fields.Many2one('hr.employee', string='Prénom', required=True, size=256)
     last_name = fields.Char(string='Nom de Famille', required=True, size=256)
-    email = fields.Char(string='Email', required=True, unique=True, widget="email")
-    phone = fields.Char(string='Téléphone', size=32, widget="phone")
+    # email = fields.Char(string='Email', required=True, unique=True, widget="email")
+    email = fields.Char(string='Email', related='employee_id.work_email', readonly=True)
+    # phone = fields.Char(string='Téléphone', size=32, widget="phone")
+    phone = fields.Char(string='Téléphone', related='employee_id.mobile_phone', readonly=True)
     role = fields.Selection([
         ('employee', 'Employé'),
         ('manager', 'Manager'),
         ('admin', 'Administrateur')
     ], string='Rôle', required=True)
-    department_id = fields.Many2one('qctracker.department', string='Département')
+    #department_id = fields.Many2one('qctracker.department', string='Département')
+    department_id = fields.Many2one('hr.department', string='Département')
     is_manager = fields.Boolean(string='Est Manager', compute='_compute_is_manager', store=True)
 
     task_ids = fields.One2many('qctracker.task', 'employee_id', string='Tâches Assignées')
     rating_employee_ids = fields.One2many('qctracker.employeerating', 'employee_id', 'Évaluations')
-    gender = fields.Selection([('male', 'Homme'), ('female', 'Femme')], string='Genre')
+    #gender = fields.Selection([('male', 'Homme'), ('female', 'Femme')], string='Genre')
+    gender = fields.Selection(string='Genre', related='employee_id.gender')
     country_id = fields.Many2one('res.country', string='Pays (ID)')
     project_ids = fields.One2many('qctracker.project', 'employee_id', string='Projets')
     user_id = fields.Many2one('res.users', string='Utilisateur Associé')
@@ -91,14 +104,7 @@ class QCTrackerEmployee(models.Model):
     country_dynamic = fields.Selection(
         '_get_country_selection', string='Pays (Dynamique)',
         help='Sélectionnez un pays (liste dynamique)')
-
-    @api.depends('first_name', 'last_name')
-    def _compute_full_name(self):
-        """
-        Calcule le nom complet de l'employé en combinant le prénom et le nom de famille.
-        """
-        for rec in self:
-            rec.name = f"{rec.first_name} {rec.last_name}" if rec.first_name and rec.last_name else ''
+    skill_ids = fields.Many2many('qctracker.skill', string='Skills')
 
     @api.depends('role')
     def _compute_is_manager(self):

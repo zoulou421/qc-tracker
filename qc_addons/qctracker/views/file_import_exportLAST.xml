@@ -1,0 +1,34 @@
+<odoo>
+    <record id="view_workflow_hierarchy_tree" model="ir.ui.view">
+        <field name="name">workflow.hierarchy.tree</field>
+        <field name="model">workflow.hierarchy</field>
+        <field name="arch" type="xml">
+            <tree string="Workflow Hierarchy">
+                <field name="name"/>
+                <field name="domain_id"/>
+                <field name="process_id"/>
+                <field name="sub_process_id"/>
+                <field name="activity_id"/>
+                <field name="active" widget="boolean_toggle"/>
+            </tree>
+        </field>
+    </record>
+    
+    <record id="view_workflow_hierarchy_form" model="ir.ui.view">
+        <field name="name">workflow.hierarchy.form</field>
+        <field name="model">workflow.hierarchy</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>
+                        <field name="name"/>
+                        <field name="domain_id" context="{'hierarchical_naming': True}"/>
+                        <field name="process_id" domain="[('domain_id', '=', domain_id)]"/>
+                        <field name="sub_process_id" domain="[('process_id', '=', process_id)]"/>
+                        <field name="activity_id" domain="[('sub_process_id', '=', sub_process_id)]"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+</odoo>

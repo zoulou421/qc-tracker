@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data noupdate="0">
+        <!-- Main Categories -->
+        <record id="category_internal" model="qctracker.category">
+            <field name="name">Internal Project</field>
+        </record>
+        <record id="category_external" model="qctracker.category">
+            <field name="name">External Project</field>
+        </record>
+
+        <!-- Internal Project Subcategories -->
+        <record id="category_marketing_department" model="qctracker.category">
+            <field name="name">Marketing Department</field>
+            <field name="parent_id" ref="category_internal"/>
+        </record>
+        <record id="category_hr_department" model="qctracker.category">
+            <field name="name">HR Department</field>
+            <field name="parent_id" ref="category_internal"/>
+        </record>
+        <record id="category_it_department" model="qctracker.category">
+            <field name="name">IT Department</field>
+            <field name="parent_id" ref="category_internal"/>
+        </record>
+        <record id="category_design_department" model="qctracker.category">
+            <field name="name">Design Department</field>
+            <field name="parent_id" ref="category_internal"/>
+        </record>
+
+        <!-- External Project Subcategories -->
+        <record id="category_tips" model="qctracker.category">
+            <field name="name">TIPS</field>
+            <field name="parent_id" ref="category_external"/>
+        </record>
+        <record id="category_technologies" model="qctracker.category">
+            <field name="name">Technologies</field>
+            <field name="parent_id" ref="category_external"/>
+        </record>
+        <record id="category_trainings" model="qctracker.category">
+            <field name="name">Trainings</field>
+            <field name="parent_id" ref="category_external"/>
+        </record>
+
+        <!-- TIPS Subcategories -->
+        <record id="category_transformation_metier" model="qctracker.category">
+            <field name="name">Transformation Métier (Entreprise)</field>
+            <field name="parent_id" ref="category_tips"/>
+        </record>
+        <record id="category_transformation_digitale" model="qctracker.category">
+            <field name="name">Transformation digitale et IT</field>
+            <field name="parent_id" ref="category_tips"/>
+        </record>
+        <record id="category_audit_risques" model="qctracker.category">
+            <field name="name">Audit, Risques informatique et Sécurité de l'information</field>
+            <field name="parent_id" ref="category_tips"/>
+        </record>
+        <record id="category_agilite_entreprise" model="qctracker.category">
+            <field name="name">Agilité d'entreprise et Transformation des Projet</field>
+            <field name="parent_id" ref="category_tips"/>
+        </record>
+        <record id="category_data_analytics" model="qctracker.category">
+            <field name="name">Data, Analytics and AI</field>
+            <field name="parent_id" ref="category_tips"/>
+        </record>
+        <record id="category_conseil_gouvernement" model="qctracker.category">
+            <field name="name">Conseil et Services en Gouvernement Digital</field>
+            <field name="parent_id" ref="category_tips"/>
+        </record>
+
+        <!-- Technologies Subcategories -->
+        <record id="category_applications_metiers" model="qctracker.category">
+            <field name="name">Applications Métiers et Solutions Digital</field>
+            <field name="parent_id" ref="category_technologies"/>
+        </record>
+        <record id="category_gestion_infrastructures" model="qctracker.category">
+            <field name="name">Gestion des infrastructures numériques et des opérations</field>
+            <field name="parent_id" ref="category_technologies"/>
+        </record>
+
+        <!-- Trainings Subcategories -->
+        <record id="category_ingenierie_conseil" model="qctracker.category">
+            <field name="name">Ingénierie conseil en formation</field>
+            <field name="parent_id" ref="category_trainings"/>
+        </record>
+        <record id="category_coaching_entreprise" model="qctracker.category">
+            <field name="name">Coaching d'entreprise</field>
+            <field name="parent_id" ref="category_trainings"/>
+        </record>
+        <record id="category_filiere_formation" model="qctracker.category">
+            <field name="name">Filière de formation</field>
+            <field name="parent_id" ref="category_trainings"/>
+        </record>
+        <record id="category_academie_gouvernementale" model="qctracker.category">
+            <field name="name">Académie gouvernemental digital</field>
+            <field name="parent_id" ref="category_trainings"/>
+        </record>
+    </data>
+</odoo>

@@ -41,7 +41,8 @@ class QCTrackerDepartment(models.Model):
     _description = 'A Department has several Employees'
 
     name = fields.Char(string='Name', required=True)
-    employee_ids = fields.One2many('qctracker.employee', 'department_id', string='Employees')
+    # employee_ids = fields.One2many('qctracker.employee', 'department_id', string='Employees')
+    employee_ids = fields.Many2one('hr.employee', string='Employees')
     employee_count = fields.Integer(string='Employee Count', compute='_compute_employee_count', store=True)
     active = fields.Boolean(string='Active', default=True)
     project_ids = fields.One2many('qctracker.project', 'department_id', string='Projects')
@@ -53,7 +54,7 @@ class QCTrackerDepartment(models.Model):
         Ce champ est calculé et stocké pour améliorer les performances.
         """
         for department in self:
-            department.employee_count = self.env['qctracker.employee'].search_count(
+            department.employee_count = self.env['hr.employee'].search_count(
                 [('department_id', '=', department.id)])
 
     def action_activate(self):

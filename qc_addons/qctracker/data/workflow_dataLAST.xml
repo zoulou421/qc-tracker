@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="workflow_domain_finance" model="workflow.domain">
+        <field name="name">Finance</field>
+    </record>
+    <record id="workflow_domain_hr" model="workflow.domain">
+        <field name="name">Human Resources</field>
+    </record>
+    <record id="workflow_domain_sales" model="workflow.domain">
+        <field name="name">Sales</field>
+    </record>
+    <record id="workflow_domain_it" model="workflow.domain">
+        <field name="name">Information Technology</field>
+    </record>
+
+    <record id="workflow_process_invoicing" model="workflow.process">
+        <field name="name">Invoicing</field>
+        <field name="domain_id" ref="workflow_domain_finance"/>
+    </record>
+    <record id="workflow_process_payroll" model="workflow.process">
+        <field name="name">Payroll Management</field>
+        <field name="domain_id" ref="workflow_domain_finance"/>
+    </record>
+    <record id="workflow_process_recruitment" model="workflow.process">
+        <field name="name">Recruitment</field>
+        <field name="domain_id" ref="workflow_domain_hr"/>
+    </record>
+    <record id="workflow_process_lead_management" model="workflow.process">
+        <field name="name">Lead Management</field>
+        <field name="domain_id" ref="workflow_domain_sales"/>
+    </record>
+
+    <record id="workflow_subprocess_customer_invoice" model="workflow.subprocess">
+        <field name="name">Customer Invoicing</field>
+        <field name="process_id" ref="workflow_process_invoicing"/>
+    </record>
+    <record id="workflow_subprocess_vendor_invoice" model="workflow.subprocess">
+        <field name="name">Vendor Invoicing</field>
+        <field name="process_id" ref="workflow_process_invoicing"/>
+    </record>
+    <record id="workflow_subprocess_salary_calculation" model="workflow.subprocess">
+        <field name="name">Salary Calculation</field>
+        <field name="process_id" ref="workflow_process_payroll"/>
+    </record>
+    <record id="workflow_subprocess_candidate_screening" model="workflow.subprocess">
+        <field name="name">Candidate Screening</field>
+        <field name="process_id" ref="workflow_process_recruitment"/>
+    </record>
+    <record id="workflow_subprocess_data_entry" model="workflow.subprocess">
+        <field name="name">Data Entry</field>
+        <field name="process_id" ref="workflow_process_lead_management"/>
+    </record>
+
+    <record id="workflow_activity_create_invoice" model="workflow.activity">
+        <field name="name">Create Invoice</field>
+        <field name="sub_process_id" ref="workflow_subprocess_customer_invoice"/>
+    </record>
+    <record id="workflow_activity_send_invoice" model="workflow.activity">
+        <field name="name">Send Invoice</field>
+        <field name="sub_process_id" ref="workflow_subprocess_customer_invoice"/>
+    </record>
+    <record id="workflow_activity_validate_invoice" model="workflow.activity">
+        <field name="name">Validate Vendor Invoice</field>
+        <field name="sub_process_id" ref="workflow_subprocess_vendor_invoice"/>
+    </record>
+    <record id="workflow_activity_calculate_taxes" model="workflow.activity">
+        <field name="name">Calculate Taxes</field>
+        <field name="sub_process_id" ref="workflow_subprocess_salary_calculation"/>
+    </record>
+    <record id="workflow_activity_review_cv" model="workflow.activity">
+        <field name="name">Review CV</field>
+        <field name="sub_process_id" ref="workflow_subprocess_candidate_screening"/>
+    </record>
+    <record id="workflow_activity_enter_lead_details" model="workflow.activity">
+        <field name="name">Enter Lead Details</field>
+        <field name="sub_process_id" ref="workflow_subprocess_data_entry"/>
+    </record>
+
+    <record id="workflow_hierarchy_entry_1" model="workflow.hierarchy">
+        <field name="name">Finance - Invoicing - Create Customer Invoice</field>
+        <field name="domain_id" ref="workflow_domain_finance"/>
+        <field name="process_id" ref="workflow_process_invoicing"/>
+        <field name="sub_process_id" ref="workflow_subprocess_customer_invoice"/>
+        <field name="activity_id" ref="workflow_activity_create_invoice"/>
+    </record>
+
+    <record id="workflow_hierarchy_entry_2" model="workflow.hierarchy">
+        <field name="name">Finance - Invoicing - Send Customer Invoice</field>
+        <field name="domain_id" ref="workflow_domain_finance"/>
+        <field name="process_id" ref="workflow_process_invoicing"/>
+        <field name="sub_process_id" ref="workflow_subprocess_customer_invoice"/>
+        <field name="activity_id" ref="workflow_activity_send_invoice"/>
+    </record>
+
+    <record id="workflow_hierarchy_entry_3" model="workflow.hierarchy">
+        <field name="name">HR - Recruitment - Candidate Screening (Review CV)</field>
+        <field name="domain_id" ref="workflow_domain_hr"/>
+        <field name="process_id" ref="workflow_process_recruitment"/>
+        <field name="sub_process_id" ref="workflow_subprocess_candidate_screening"/>
+        <field name="activity_id" ref="workflow_activity_review_cv"/>
+    </record>
+
+    <record id="workflow_hierarchy_entry_4" model="workflow.hierarchy">
+        <field name="name">Sales - Lead Management - Lead Data Entry</field>
+        <field name="domain_id" ref="workflow_domain_sales"/>
+        <field name="process_id" ref="workflow_process_lead_management"/>
+        <field name="sub_process_id" ref="workflow_subprocess_data_entry"/>
+        <field name="activity_id" ref="workflow_activity_enter_lead_details"/>
+    </record>
+
+    <record id="workflow_hierarchy_entry_incomplete_payroll" model="workflow.hierarchy">
+        <field name="name">Finance - Payroll Management (Incomplete)</field>
+        <field name="domain_id" ref="workflow_domain_finance"/>
+        <field name="process_id" ref="workflow_process_payroll"/>
+        <field name="notes">This entry represents the payroll process, but specific sub-processes and activities are not yet defined.</field>
+    </record>
+
+    <record id="workflow_hierarchy_entry_incomplete_it_setup" model="workflow.hierarchy">
+        <field name="name">IT - Infrastructure Setup (Process Only)</field>
+        <field name="domain_id" ref="workflow_domain_it"/>
+        <field name="process_id" model="workflow.process" eval="obj().create({'name': 'Infrastructure Setup', 'domain_id': ref('workflow_domain_it')}).id"/>
+        <field name="notes">Initial definition for IT Infrastructure, awaiting detailed sub-processes.</field>
+    </record>
+
+</odoo>

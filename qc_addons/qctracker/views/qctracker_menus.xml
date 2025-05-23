@@ -1,32 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
 <odoo>
-    <!--data>
-        <menuitem id="menu_qctracker_root" name="QC Tracker 📊" sequence="10"/>
-
-        <menuitem id="menu_qctracker_employee" name="Employés 👥" parent="menu_qctracker_root" action="action_qctracker_employee" sequence="10"/>
-
-        <menuitem id="menu_qctracker_department" name="Départements 🏢" parent="menu_qctracker_root" action="action_qctracker_department" sequence="20"/>
-
-        <menuitem id="menu_qctracker_project" name="Projets 🚀" parent="menu_qctracker_root" action="action_qctracker_project" sequence="30"/>
-
-        <menuitem id="menu_qctracker_task" name="Tâches 📋" parent="menu_qctracker_root" action="action_qctracker_task" sequence="40"/>
-
-        <menuitem id="menu_qctracker_process" name="Processus 🔄" parent="menu_qctracker_root" action="action_qctracker_process" sequence="50"/>
-
-        <menuitem id="menu_qctracker_sub_process" name="Sous-Processus 📄" parent="menu_qctracker_root" action="action_qctracker_sub_process" sequence="60"/>
-
-        <menuitem id="menu_qctracker_subtask" name="Sous-Tâches 🧩" parent="menu_qctracker_root" action="action_qctracker_subtask" sequence="70"/>
-
-        <menuitem id="menu_qctracker_employeerating" name="Évaluations d'Employés ⭐" parent="menu_qctracker_root" action="action_qctracker_employeerating" sequence="80"/>
-
-        <menuitem id="menu_qctracker_skill_category" name="Catégories de Compétences 📂" parent="menu_qctracker_root" action="action_qctracker_skill_category" sequence="90"/>
-
-        <menuitem id="menu_qctracker_skill" name="Compétences 🛠️" parent="menu_qctracker_root" action="action_qctracker_skill" sequence="100"/>
-
-        <menuitem id="menu_qctracker_skillrating" name="Évaluations de Compétences ⭐" parent="menu_qctracker_root" action="action_qctracker_skillrating" sequence="110"/>
-    </data-->
-
     <data>
         <menuitem id="menu_qctracker_root" name="QC Tracker 📊" sequence="10"/>
+
+        <menuitem id="menu_qctracker_project_workflow_management" name="Gestion Flux Projets 🚀" parent="menu_qctracker_root" sequence="10"/>
+        <menuitem id="menu_qctracker_process_project_project_main"
+                  name="Projets de Processus"
+                  parent="menu_qctracker_project_workflow_management"
+                  action="action_qctracker_process_project_project"
+                  sequence="10"/>
+        <menuitem id="menu_qctracker_domain_project"
+                  name="Domaines de Projet"
+                  parent="menu_qctracker_project_workflow_management"
+                  action="action_qctracker_domain_project"
+                  sequence="20"/>
+        <menuitem id="menu_qctracker_process_project"
+                  name="Processus de Projet"
+                  parent="menu_qctracker_project_workflow_management"
+                  action="action_qctracker_process_project"
+                  sequence="30"/>
+        <menuitem id="menu_qctracker_sub_process_project"
+                  name="Sous-processus de Projet"
+                  parent="menu_qctracker_project_workflow_management"
+                  action="action_qctracker_sub_process_project"
+                  sequence="40"/>
+        <menuitem id="menu_qctracker_activity_project"
+                  name="Activités de Projet"
+                  parent="menu_qctracker_project_workflow_management"
+                  action="action_qctracker_activity_project"
+                  sequence="50"/>
+        <menuitem id="menu_qctracker_procedure_project"
+                  name="Procédures de Projet"
+                  parent="menu_qctracker_project_workflow_management"
+                  action="action_qctracker_procedure_project"
+                  sequence="60"/>
+        <menuitem id="menu_qctracker_deliverable_project"
+                  name="Livrables de Projet"
+                  parent="menu_qctracker_project_workflow_management"
+                  action="action_qctracker_deliverable_project"
+                  sequence="70"/>
+        <menuitem id="menu_qctracker_task_formulation_project"
+                  name="Formulations de Tâches de Projet"
+                  parent="menu_qctracker_project_workflow_management"
+                  action="action_qctracker_task_formulation_project"
+                  sequence="80"/>
 
         <menuitem id="menu_qctracker_employee_management" name="Gestion des Employés 🧑‍💼" parent="menu_qctracker_root" sequence="20"/>
         <menuitem id="menu_qctracker_employee" name="Employés 👥" parent="menu_qctracker_employee_management" action="action_qctracker_employee" sequence="10"/>
@@ -41,12 +58,24 @@
         <menuitem id="menu_qctracker_task" name="Tâches 📋" parent="menu_qctracker_task_management" action="action_qctracker_task" sequence="20"/>
         <menuitem id="menu_qctracker_subtask" name="Sous-Tâches 🧩" parent="menu_qctracker_task_management" action="action_qctracker_subtask" sequence="30"/>
 
-        <menuitem id="menu_qctracker_process_management" name="Gestion des Processus 🔄" parent="menu_qctracker_root" sequence="40"/>
-        <menuitem id="menu_qctracker_process" name="Processus 🔄" parent="menu_qctracker_process_management" action="action_qctracker_process" sequence="10"/>
-        <menuitem id="menu_qctracker_sub_process" name="Sous-Processus 📄" parent="menu_qctracker_process_management" action="action_qctracker_sub_process" sequence="20"/>
+        <menuitem id="menu_workflow_management" name="Gestion Workflow (Ancien) 🌐" parent="menu_qctracker_root" sequence="50"/>
+        <menuitem id="menu_workflow_hierarchy" name="Hiérarchie des Workflows (Ancien) 📈" parent="menu_workflow_management" action="action_workflow_hierarchy" sequence="10"/>
+        <menuitem id="menu_workflow_domain" name="Domaines (Ancien) 🌐" parent="menu_workflow_management" action="action_workflow_domain" sequence="20"/>
+        <menuitem id="menu_workflow_process" name="Processus (Ancien) ⚙️" parent="menu_workflow_management" action="action_workflow_process" sequence="30"/>
+        <menuitem id="menu_workflow_subprocess" name="Sous-processus (Ancien) 📝" parent="menu_workflow_management" action="action_workflow_subprocess" sequence="40"/>
+        <menuitem id="menu_workflow_activity" name="Activités (Ancien) 🧩" parent="menu_workflow_management" action="action_workflow_activity" sequence="50"/>
+        <menuitem id="menu_workflow_procedure" name="Procédures (Ancien) 📜" parent="menu_workflow_management" action="action_workflow_procedure" sequence="60"/>
+        <menuitem id="menu_workflow_deliverable" name="Livrables (Ancien) ✅" parent="menu_workflow_management" action="action_workflow_deliverable" sequence="70"/>
+        <menuitem id="menu_workflow_task_formulation" name="Formulations de Tâches (Ancien) 📝" parent="menu_workflow_management" action="action_workflow_task_formulation" sequence="80"/>
 
-         <menuitem id="menu_qctracker_projectdelivery" name="Livraisons de Projets ✅"
-                  parent="menu_qctracker_root" action="action_qctracker_projectdelivery" sequence="90"/>
+
+        <menuitem id="menu_qctracker_projectdelivery" name="Livraisons de Projets ✅"
+                  parent="menu_qctracker_root" action="action_qctracker_projectdelivery" sequence="60"/>
+        <menuitem id="menu_qctracker_process_importer"
+              name="Importer XLSX"
+              parent="menu_qctracker_root"
+              action="action_qctracker_process_importer"
+              sequence="70"/>
 
     </data>
 </odoo>

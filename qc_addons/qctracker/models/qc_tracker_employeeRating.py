@@ -3,44 +3,6 @@
 from odoo import models, fields, api
 from odoo.exceptions import ValidationError
 
-"""
-
-========Objectif====== :
-Ce modèle représente une évaluation d'employé effectuée par un manager pour un projet donné.
-Il permet de suivre les performances des employés et de fournir des commentaires structurés.
-
-
-========Champs====== :
-employee_id (Many2one vers qctracker.employee) : L'employé évalué.
-project_id (Many2one vers qctracker.project) : Le projet sur lequel l'évaluation est basée.
-rating (Integer, par défaut 0) : La note de l'employé (de 0 à 10).
-on_time (Boolean) : Indique si l'employé a respecté les délais.
-comments (Text) : Les commentaires du manager.
-evaluation_date (Date) : La date de l'évaluation.
-state (Selection, par défaut 'draft') : Le statut de l'évaluation (draft, submitted).
-manager_id (Many2one vers res.users, par défaut l'utilisateur courant) : Le manager qui a effectué l'évaluation.
-
-
-=======Méthodes======== :
-_check_rating_range() : Valide que la note est comprise entre 0 et 10.
-_check_submitted_modification() : Empêche la modification des évaluations soumises.
-action_submit() : Soumet l'évaluation.
-action_reset() : Réinitialise l'évaluation à l'état brouillon.
-get_rating_label() : Retourne une étiquette textuelle pour la note.
-_compute_employee_average_rating() : Calcule la note moyenne d'un employé.
-
-=======Fonctionnalités Clés========= :
-Gestion des évaluations des employés par projet.
-Validation des notes et des modifications.
-Suivi des délais et des commentaires.
-Gestion des statuts des évaluations.
-Calcul de note moyenne de l'employé.
-
-=========Utilisation========= :
-Ce modèle est essentiel pour évaluer les performances des employés et fournir un feedback structuré.
-Il permet de suivre les progrès des employés et d'identifier les domaines d'amélioration.
-
-"""
 
 # --- QCTrackerEmployeeRating Model ---
 class QCTrackerEmployeeRating(models.Model):

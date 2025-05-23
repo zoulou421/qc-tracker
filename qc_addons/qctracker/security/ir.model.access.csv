@@ -87,3 +87,132 @@ id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
 access_qctracker_skill_category,Access to Skill Category (QC Employee),model_qctracker_skill_category,group_qctracker_employee,1,0,0,0
 access_qctracker_skill_category_manager,Access to Skill Category (QC Manager),model_qctracker_skill_category,group_qctracker_manager,1,1,1,0
 access_qctracker_skill_category_admin,Access to Skill Category (QC Admin),model_qctracker_skill_category,group_qctracker_admin,1,1,1,1
+
+# Droits d'accès pour le modèle qctracker.category
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_qctracker_category,Access to Project Category (QC Employee),model_qctracker_category,group_qctracker_employee,1,0,0,0
+access_qctracker_category_manager,Access to Project Category (QC Manager),model_qctracker_category,group_qctracker_manager,1,1,1,0
+access_qctracker_category_admin,Access to Project Category (QC Admin),model_qctracker_category,group_qctracker_admin,1,1,1,1
+
+
+# Droits d'accès pour le modèle qctracker.category.internal
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_qctracker_category_internal,Access to Project Internal Category (QC Employee),model_qctracker_category_internal,group_qctracker_employee,1,0,0,0
+access_qctracker_category_internal_manager,Access to Project Category (QC Manager),model_qctracker_category_internal,group_qctracker_manager,1,1,1,0
+access_qctracker_category_internal_admin,Access to Project Category (QC Admin),model_qctracker_category_internal,group_qctracker_admin,1,1,1,1
+
+
+# Droits d'accès pour le modèle qctracker.activity.project
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_qctracker_activity_project,Access to Activity Project (QC Employee),model_qctracker_activity_project,group_qctracker_employee,1,0,0,0
+access_qctracker_activity_project_manager,Access to Activity Project (QC Manager),model_qctracker_activity_project,group_qctracker_manager,1,1,1,0
+access_qctracker_activity_project_admin,Access to Activity Project (QC Admin),model_qctracker_activity_project,group_qctracker_admin,1,1,1,1
+
+
+# Droits d'accès pour le modèle qctracker.deliverable.project
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_qctracker_deliverable_project,Access to Deliverable Project (QC Employee),model_qctracker_deliverable_project,group_qctracker_employee,1,0,0,0
+access_qctracker_deliverable_project_manager,Access to Deliverable Project (QC Manager),model_qctracker_deliverable_project,group_qctracker_manager,1,1,1,0
+access_qctracker_deliverable_project_admin,Access to Deliverable Project (QC Admin),model_qctracker_deliverable_project,group_qctracker_admin,1,1,1,1
+
+
+# Droits d'accès pour le modèle qctracker.domain.project
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_qctracker_domain_project,Access to Domain Project (QC Employee),model_qctracker_domain_project,group_qctracker_employee,1,0,0,0
+access_qctracker_domain_project_manager,Access to Domain Project (QC Manager),model_qctracker_domain_project,group_qctracker_manager,1,1,1,0
+access_qctracker_domain_project_admin,Access to Domain Project (QC Admin),model_qctracker_domain_project,group_qctracker_admin,1,1,1,1
+
+
+# Droits d'accès pour le modèle qctracker.task_formulation.project
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_qctracker_task_formulation_project,Access to Formulation Project (QC Employee),model_qctracker_task_formulation_project,group_qctracker_employee,1,0,0,0
+access_qctracker_task_formulation_project_manager,Access to Formulation Project (QC Manager),model_qctracker_task_formulation_project,group_qctracker_manager,1,1,1,0
+access_qctracker_task_formulation_project_admin,Access to Formulation Project (QC Admin),model_qctracker_task_formulation_project,group_qctracker_admin,1,1,1,1
+
+# Droits d'accès pour le modèle qctracker.procedure.project
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_qctracker_procedure_project,Access to Procedure Project (QC Employee),model_qctracker_procedure_project,group_qctracker_employee,1,0,0,0
+access_qctracker_procedure_project_manager,Access to Procedure Project (QC Manager),model_qctracker_procedure_project,group_qctracker_manager,1,1,1,0
+access_qctracker_procedure_project_admin,Access to Procedure Project (QC Admin),model_qctracker_procedure_project,group_qctracker_admin,1,1,1,1
+
+# Droits d'accès pour le modèle qctracker.process.project
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_qctracker_process_project,Access to Process Project (QC Employee),model_qctracker_process_project,group_qctracker_employee,1,0,0,0
+access_qctracker_process_project_manager,Access to Process Project (QC Manager),model_qctracker_process_project,group_qctracker_manager,1,1,1,0
+access_qctracker_process_project_admin,Access to Process Project (QC Admin),model_qctracker_process_project,group_qctracker_admin,1,1,1,1
+
+
+# Droits d'accès pour le modèle qctracker.sub_process.project
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_qctracker_sub_process_project,Access to Sub-Process Project (QC Employee),model_qctracker_sub_process_project,group_qctracker_employee,1,0,0,0
+access_qctracker_sub_process_project_manager,Access to Sub-Process Project (QC Manager),model_qctracker_sub_process_project,group_qctracker_manager,1,1,1,0
+access_qctracker_sub_process_project_admin,Access to Sub-Process Project (QC Admin),model_qctracker_sub_process_project,group_qctracker_admin,1,1,1,1
+
+# Droits d'accès pour le modèle qctracker.process.project.project
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_qctracker_process_project_project,Access to Process Project Project (QC Employee),model_qctracker_process_project_project,group_qctracker_employee,1,0,0,0
+access_qctracker_process_project_project_manager,Access to Process Project Project (QC Manager),model_qctracker_process_project_project,group_qctracker_manager,1,1,1,0
+access_qctracker_process_project_project_admin,Access to Process Project Project (QC Admin),model_qctracker_process_project_project,group_qctracker_admin,1,1,1,1
+
+
+# Droits d'accès pour le modèle qctracker.process.importer
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_qctracker_process_importer,Access to Process Importer (QC Employee),model_qctracker_process_importer,group_qctracker_employee,1,0,0,0
+access_qctracker_process_importer_manager,Access to Process Importer (QC Manager),model_qctracker_process_importer,group_qctracker_manager,1,1,1,0
+access_qctracker_process_importer_admin,Access to Process Importer (QC Admin),model_qctracker_process_importer,group_qctracker_admin,1,1,1,1
+
+
+# Droits d'accès pour le modèle workflow.hierarchy
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_workflow_hierarchy,Access to Workflow Hierarchy (QC Employee),model_workflow_hierarchy,group_qctracker_employee,1,0,0,0
+access_workflow_hierarchy_manager,Access to Workflow Hierarchy (QC Manager),model_workflow_hierarchy,group_qctracker_manager,1,1,1,0
+access_workflow_hierarchy_admin,Access to Workflow Hierarchy (QC Admin),model_workflow_hierarchy,group_qctracker_admin,1,1,1,1
+
+# Droits d'accès pour le modèle workflow.domain
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_workflow_domain,Access to Workflow Domain (QC Employee),model_workflow_domain,group_qctracker_employee,1,0,0,0
+access_workflow_domain_manager,Access to Workflow Domain (QC Manager),model_workflow_domain,group_qctracker_manager,1,1,1,0
+access_workflow_domain_admin,Access to Workflow Domain (QC Admin),model_workflow_domain,group_qctracker_admin,1,1,1,1
+
+# Droits d'accès pour le modèle workflow.process
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_workflow_process,Access to Workflow Process (QC Employee),model_workflow_process,group_qctracker_employee,1,0,0,0
+access_workflow_process_manager,Access to Workflow Process (QC Manager),model_workflow_process,group_qctracker_manager,1,1,1,0
+access_workflow_process_admin,Access to Workflow Process (QC Admin),model_workflow_process,group_qctracker_admin,1,1,1,1
+
+# Droits d'accès pour le modèle workflow.subprocess
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_workflow_subprocess,Access to Workflow Subprocess (QC Employee),model_workflow_subprocess,group_qctracker_employee,1,0,0,0
+access_workflow_subprocess_manager,Access to Workflow Subprocess (QC Manager),model_workflow_subprocess,group_qctracker_manager,1,1,1,0
+access_workflow_subprocess_admin,Access to Workflow Subprocess (QC Admin),model_workflow_subprocess,group_qctracker_admin,1,1,1,1
+
+
+# Droits d'accès pour le modèle workflow.activity
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_workflow_activity,Access to Workflow Activity (QC Employee),model_workflow_activity,group_qctracker_employee,1,0,0,0
+access_workflow_activity_manager,Access to Workflow Activity(QC Manager),model_workflow_activity,group_qctracker_manager,1,1,1,0
+access_workflow_activity_admin,Access to Workflow Activity (QC Admin),model_workflow_activity,group_qctracker_admin,1,1,1,1
+
+
+# Droits d'accès pour le modèle workflow.procedure
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_workflow_procedure,Access to Workflow Procedure (QC Employee),model_workflow_procedure,group_qctracker_employee,1,0,0,0
+access_workflow_procedure_manager,Access to Workflow Procedure(QC Manager),model_workflow_procedure,group_qctracker_manager,1,1,1,0
+access_workflow_procedure_admin,Access to Workflow Procedure (QC Admin),model_workflow_procedure,group_qctracker_admin,1,1,1,1
+
+
+# Droits d'accès pour le modèle workflow.deliverable
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_workflow_deliverable,Access to Workflow Deliverable (QC Employee),model_workflow_deliverable,group_qctracker_employee,1,0,0,0
+access_workflow_deliverable_manager,Access to Workflow Deliverable(QC Manager),model_workflow_deliverable,group_qctracker_manager,1,1,1,0
+access_workflow_deliverable_admin,Access to Workflow Deliverable (QC Admin),model_workflow_deliverable,group_qctracker_admin,1,1,1,1
+
+
+# Droits d'accès pour le modèle workflow.task.formulation
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_workflow_task_formulation,Access to Workflow Task Formulation (QC Employee),model_workflow_task_formulation,group_qctracker_employee,1,0,0,0
+access_workflow_task_formulation_manager,Access to Workflow Task Formulation(QC Manager),model_workflow_task_formulation,group_qctracker_manager,1,1,1,0
+access_workflow_task_formulation_admin,Access to Workflow Task Formulation (QC Admin),model_workflow_task_formulation,group_qctracker_admin,1,1,1,1
+
+
+

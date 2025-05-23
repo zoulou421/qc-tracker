@@ -2,6 +2,7 @@
 
 from odoo import models, fields, api
 
+
 class QCTrackerProjectDelivery(models.Model):
     """
     Modèle Odoo représentant la validation de la livraison d'un projet.

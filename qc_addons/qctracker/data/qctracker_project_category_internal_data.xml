@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data noupdate="0">
+        <!-- Main Categories -->
+        <record id="category_internal_internal" model="qctracker.category.internal">
+            <field name="name">Internal Project</field>
+        </record>
+
+        <!-- Internal Project Subcategories -->
+        <record id="category_marketing_department_internal" model="qctracker.category.internal">
+            <field name="name" >Marketing Department</field>
+            <field name="parent_internal_id" ref="category_internal_internal"/>
+        </record>
+        <record id="category_hr_internal_department" model="qctracker.category.internal">
+            <field name="name">HR Department</field>
+            <field name="parent_internal_id" ref="category_internal_internal"/>
+        </record>
+        <record id="category_it_internal_department" model="qctracker.category.internal">
+            <field name="name">IT Department</field>
+            <field name="parent_internal_id" ref="category_internal_internal"/>
+        </record>
+        <record id="category_design_internal_department" model="qctracker.category.internal">
+            <field name="name">Design Department</field>
+            <field name="parent_internal_id" ref="category_internal_internal"/>
+        </record>
+    </data>
+</odoo>

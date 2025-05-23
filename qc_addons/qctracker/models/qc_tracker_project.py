@@ -39,6 +39,26 @@ Il permet de centraliser les informations relatives aux projets et de faciliter 
 """
 
 
+class QCTrackerCategoryInternal(models.Model):
+    _name = 'qctracker.category.internal'
+    _description = 'Project Category Internal'
+
+    name = fields.Char(string='Category Name', required=True)
+    parent_internal_id = fields.Many2one('qctracker.category.internal', string='Parent Category Internal',
+                                         ondelete='cascade')
+    child_internal_ids = fields.One2many('qctracker.category.internal', 'parent_internal_id', string='Subcategories')
+
+
+class QCTrackerCategoryExternal(models.Model):
+    _name = 'qctracker.category.external'
+    _description = 'Project Category external'
+
+    name = fields.Char(string='Category Name', required=True)
+    parent_external_id = fields.Many2one('qctracker.category.external', string='Parent Category External',
+                                         ondelete='cascade')
+    child_external_ids = fields.One2many('qctracker.category.external', 'parent_external_id', string='Subcategories')
+
+
 # --- QCTrackerProject Model ---
 class QCTrackerProject(models.Model):
     """
@@ -49,9 +69,14 @@ class QCTrackerProject(models.Model):
     _inherit = ['mail.thread', 'mail.activity.mixin']  # Add this line
     _description = 'A Project is attached to a Department'
 
+    # New field for categories
+    category_ids = fields.Many2many('qctracker.category', string='Categories')
+    category_internal_ids = fields.Many2many('qctracker.category.internal', string='Categories')
+    # category_external_ids = fields.Many2many('qctracker.category.external', string='Categories')
+
     name = fields.Char(string='Name', required=True)
     description = fields.Text(string='Description')
-    department_id = fields.Many2one('qctracker.department', string='Department')
+    #department_id = fields.Many2one('qctracker.department', string='Department')
     start_date = fields.Date(string='Start Date')
     end_date = fields.Date(string='End Date')
     employee_id = fields.Many2one('qctracker.employee', string='Project Manager')
@@ -61,6 +86,14 @@ class QCTrackerProject(models.Model):
         ('in_progress', 'In Progress'),
         ('done', 'Completed'),
     ], string='Status', default='to_do', help='Task status')
+
+    project_type = fields.Selection([
+        ('internal', 'Internal Project'),
+        ('external', 'External Project')
+    ], string='Project Type', default='internal', help='Project Type ')
+
+    department_id = fields.Many2one('hr.department', string='Department')
+
     progress = fields.Integer(string="Progress", compute='_compute_progress',
                               store=True)  # Calcule auto de la progression
     tag_ids = fields.Many2many('qctracker.tag', string="Tags")
@@ -88,14 +121,3 @@ class QCTrackerProject(models.Model):
                 project.progress = int((completed_tasks / len(tasks)) * 100)
             else:
                 project.progress = 0
-
-
-# --- QCTrackerTag Model ---
-class QCTrackerTag(models.Model):
-    """
-    Modèle Odoo représentant un tag de projet.
-    """
-    _name = "qctracker.tag"
-    _description = "Project Tags"
-
-    name = fields.Char(string="Tag Name", required=True)

@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <record id="qctracker_notification_view_tree" model="ir.ui.view">
+        <field name="name">qctracker.task.notification.tree</field>
+        <field name="model">qctracker.task.notification</field>
+        <field name="arch" type="xml">
+            <tree class="qctracker-notification-tree">
+                <field name="task_id" />
+                <field name="recipient_id" />
+                <field name="message" />
+                <field name="is_read" />
+                <field name="date_created" />
+                <button name="action_mark_as_read" string="Mark as Read" type="object" icon="fa-check" context="{'default_is_read': True}" invisible="is_read"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="qctracker_notification_view_form" model="ir.ui.view">
+        <field name="name">qctracker.task.notification.form</field>
+        <field name="model">qctracker.task.notification</field>
+        <field name="arch" type="xml">
+            <form class="qctracker-notification-form">
+                <sheet>
+                    <group>
+                        <field name="task_id" class="animated pulse" />
+                        <field name="recipient_id" class="animated pulse" />
+                        <field name="message" widget="text" class="animated pulse" />
+                        <field name="is_read" class="animated pulse" />
+                        <field name="date_created" class="animated pulse" />
+                    </group>
+                </sheet>
+                <div class="oe_chatter">
+                    <field name="message_ids" widget="mail_thread" />
+                </div>
+            </form>
+        </field>
+    </record>
+
+    <record id="action_qctracker_notification" model="ir.actions.act_window">
+        <field name="name">Notifications</field>
+        <field name="res_model">qctracker.task.notification</field>
+        <field name="view_mode">tree,form</field>
+        <field name="view_id" ref="qctracker_notification_view_tree" />
+        <field name="domain">[('recipient_id.user_id', '=', uid)]</field>
+    </record>
+
+    <menuitem id="qctracker_notification_menu" name="Notifications 🔔" parent="menu_qctracker_root" action="action_qctracker_notification" sequence="100"/>
+</odoo>

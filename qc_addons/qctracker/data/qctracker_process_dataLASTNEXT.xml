@@ -1,0 +1,363 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <!-- Domain: PS: SUPPORT -->
+        <record id="domain_support" model="qctracker.domain.project">
+            <field name="name">PS: SUPPORT</field>
+        </record>
+
+        <!-- Process: PS4. Information system management -->
+        <record id="process_ps4" model="qctracker.process.project">
+            <field name="name">PS4. Information system management</field>
+            <field name="domain_id" ref="domain_support"/>
+        </record>
+
+        <!-- Sub Process: PS4.1: Manage IT and office equipment -->
+        <record id="sub_process_ps4_1" model="qctracker.sub_process.project">
+            <field name="name">PS4.1: Manage IT and office equipment</field>
+            <field name="process_id" ref="process_ps4"/>
+        </record>
+
+        <!-- Sub Process: PS4.2: Manage the Enterprise Management system -->
+        <record id="sub_process_ps4_2" model="qctracker.sub_process.project">
+            <field name="name">PS4.2: Manage the Enterprise Management system</field>
+            <field name="process_id" ref="process_ps4"/>
+        </record>
+
+        <!-- Activity: PS4.1_A1: Manage IT equipment inputs/outputs -->
+        <record id="activity_ps4_1_a1" model="qctracker.activity.project">
+            <field name="name">PS4.1_A1: Manage IT equipment inputs/outputs</field>
+            <field name="sub_process_id" ref="sub_process_ps4_1"/>
+        </record>
+
+        <!-- Activity: PS4.1_A2: Manage licenses and subscriptions -->
+        <record id="activity_ps4_1_a2" model="qctracker.activity.project">
+            <field name="name">PS4.1_A2: Manage licenses and subscriptions</field>
+            <field name="sub_process_id" ref="sub_process_ps4_1"/>
+        </record>
+
+        <!-- Activity: PS4.1_A3: Install equipment or software -->
+        <record id="activity_ps4_1_a3" model="qctracker.activity.project">
+            <field name="name">PS4.1_A3: Install equipment or software</field>
+            <field name="sub_process_id" ref="sub_process_ps4_1"/>
+        </record>
+
+        <!-- Activity: PS4.1_A4: Manage office and production tools -->
+        <record id="activity_ps4_1_a4" model="qctracker.activity.project">
+            <field name="name">PS4.1_A4: Manage office and production tools</field>
+            <field name="sub_process_id" ref="sub_process_ps4_1"/>
+        </record>
+
+        <!-- Activity: PS4.1_A5: Ensure the maintenance of computer equipment -->
+        <record id="activity_ps4_1_a5" model="qctracker.activity.project">
+            <field name="name">PS4.1_A5: Ensure the maintenance of computer equipment</field>
+            <field name="sub_process_id" ref="sub_process_ps4_1"/>
+        </record>
+
+        <!-- Activity: PS4.2_A1: Manage users and their rights -->
+        <record id="activity_ps4_2_a1" model="qctracker.activity.project">
+            <field name="name">PS4.2_A1: Manage users and their rights</field>
+            <field name="sub_process_id" ref="sub_process_ps4_2"/>
+        </record>
+
+        <!-- Activity: PS4.2_A2: Maintain the system -->
+        <record id="activity_ps4_2_a2" model="qctracker.activity.project">
+            <field name="name">PS4.2_A2: Maintain the system (Corrective maintenance, Evolutionary maintenance)</field>
+            <field name="sub_process_id" ref="sub_process_ps4_2"/>
+        </record>
+
+        <!-- Activity: PS4.2_A3: Manage specifications -->
+        <record id="activity_ps4_2_a3" model="qctracker.activity.project">
+            <field name="name">PS4.2_A3: Manage specifications</field>
+            <field name="sub_process_id" ref="sub_process_ps4_2"/>
+        </record>
+
+        <!-- Activity: PS4.2_A4: Manage changes -->
+        <record id="activity_ps4_2_a4" model="qctracker.activity.project">
+            <field name="name">PS4.2_A4: Manage changes</field>
+            <field name="sub_process_id" ref="sub_process_ps4_2"/>
+        </record>
+
+        <!-- Activity: PS4.2_A5: Support users -->
+        <record id="activity_ps4_2_a5" model="qctracker.activity.project">
+            <field name="name">PS4.2_A5: Support users</field>
+            <field name="sub_process_id" ref="sub_process_ps4_2"/>
+        </record>
+
+        <!-- Procedures for PS4.1_A1 -->
+        <record id="procedure_ps4_1_a1_p1" model="qctracker.procedure.project">
+            <field name="name">PS4.1_A1_P1: Identify ICT equipment needs and appropriate references to meet them</field>
+            <field name="activity_id" ref="activity_ps4_1_a1"/>
+        </record>
+        <record id="procedure_ps4_1_a1_p2" model="qctracker.procedure.project">
+            <field name="name">PS4.1_A1_P2: Validate, transmit the need for ICT equipment</field>
+            <field name="activity_id" ref="activity_ps4_1_a1"/>
+        </record>
+        <record id="procedure_ps4_1_a1_p3" model="qctracker.procedure.project">
+            <field name="name">PS4.1_A1_P3: Acquire ICT equipment</field>
+            <field name="activity_id" ref="activity_ps4_1_a1"/>
+        </record>
+        <record id="procedure_ps4_1_a1_p4" model="qctracker.procedure.project">
+            <field name="name">PS4.1_A1_P4: Provide and monitor IT equipment</field>
+            <field name="activity_id" ref="activity_ps4_1_a1"/>
+        </record>
+
+        <!-- Procedures for PS4.1_A2 -->
+        <record id="procedure_ps4_1_a2_p1" model="qctracker.procedure.project">
+            <field name="name">PS4.1_A2_P1: Identify and submit the need for a license or subscription</field>
+            <field name="activity_id" ref="activity_ps4_1_a2"/>
+        </record>
+        <record id="procedure_ps4_1_a2_p2" model="qctracker.procedure.project">
+            <field name="name">PS4.1_A2_P2: Validate and transmit the need for license or subscription</field>
+            <field name="activity_id" ref="activity_ps4_1_a2"/>
+        </record>
+        <record id="procedure_ps4_1_a2_p3" model="qctracker.procedure.project">
+            <field name="name">PS4.1_A2_P3: Complete the subscription or acquisition of the service</field>
+            <field name="activity_id" ref="activity_ps4_1_a2"/>
+        </record>
+        <record id="procedure_ps4_1_a2_p4" model="qctracker.procedure.project">
+            <field name="name">PS4.1_A2_P4: Track licenses and subscriptions</field>
+            <field name="activity_id" ref="activity_ps4_1_a2"/>
+        </record>
+
+        <!-- Procedures for PS4.1_A3 -->
+        <record id="procedure_ps4_1_a3_p1" model="qctracker.procedure.project">
+            <field name="name">PS4.1_A3_P1: Install ICT equipment and systems</field>
+            <field name="activity_id" ref="activity_ps4_1_a3"/>
+        </record>
+
+        <!-- Procedures for PS4.1_A4 -->
+        <record id="procedure_ps4_1_a4_p1" model="qctracker.procedure.project">
+            <field name="name">PS4.1_A4_P1: Monitor the use of office tools</field>
+            <field name="activity_id" ref="activity_ps4_1_a4"/>
+        </record>
+
+        <!-- Procedures for PS4.1_A5 -->
+        <record id="procedure_ps4_1_a5_p1" model="qctracker.procedure.project">
+            <field name="name">PS4.1_A5_P1: Issue a maintenance request</field>
+            <field name="activity_id" ref="activity_ps4_1_a5"/>
+        </record>
+        <record id="procedure_ps4_1_a5_p2" model="qctracker.procedure.project">
+            <field name="name">PS4.1_A5_P2: Perform maintenance</field>
+            <field name="activity_id" ref="activity_ps4_1_a5"/>
+        </record>
+
+        <!-- Procedures for PS4.2_A1 -->
+        <record id="procedure_ps4_2_a1_p1" model="qctracker.procedure.project">
+            <field name="name">PS4.2_A1_P1: Create user rights</field>
+            <field name="activity_id" ref="activity_ps4_2_a1"/>
+        </record>
+        <record id="procedure_ps4_2_a1_p2" model="qctracker.procedure.project">
+            <field name="name">PS4.2_A1_P2: Modify user rights</field>
+            <field name="activity_id" ref="activity_ps4_2_a1"/>
+        </record>
+        <record id="procedure_ps4_2_a1_p3" model="qctracker.procedure.project">
+            <field name="name">PS4.2_A1_P3: Remove user rights</field>
+            <field name="activity_id" ref="activity_ps4_2_a1"/>
+        </record>
+        <record id="procedure_ps4_2_a1_p4" model="qctracker.procedure.project">
+            <field name="name">PS4.2_A1_P4: Redraft file modification sheet</field>
+            <field name="activity_id" ref="activity_ps4_2_a1"/>
+        </record>
+
+        <!-- Procedures for PS4.2_A2 -->
+        <record id="procedure_ps4_2_a2_p1" model="qctracker.procedure.project">
+            <field name="name">PS4.2_A2_P1: Perform corrective maintenance</field>
+            <field name="activity_id" ref="activity_ps4_2_a2"/>
+        </record>
+        <record id="procedure_ps4_2_a2_p2" model="qctracker.procedure.project">
+            <field name="name">PS4.2_A2_P2: Perform evolutionary maintenance</field>
+            <field name="activity_id" ref="activity_ps4_2_a2"/>
+        </record>
+
+        <!-- Procedures for PS4.2_A3 -->
+        <record id="procedure_ps4_2_a3_p1" model="qctracker.procedure.project">
+            <field name="name">PS4.2_A3_P1: Formulate a request for specification</field>
+            <field name="activity_id" ref="activity_ps4_2_a3"/>
+        </record>
+        <record id="procedure_ps4_2_a3_p2" model="qctracker.procedure.project">
+            <field name="name">PS4.2_A3_P2: Validate the specification</field>
+            <field name="activity_id" ref="activity_ps4_2_a3"/>
+        </record>
+
+        <!-- Procedures for PS4.2_A4 -->
+        <record id="procedure_ps4_2_a4_p1" model="qctracker.procedure.project">
+            <field name="name">PS4.2_A4_P1: Make a request for change</field>
+            <field name="activity_id" ref="activity_ps4_2_a4"/>
+        </record>
+        <record id="procedure_ps4_2_a4_p2" model="qctracker.procedure.project">
+            <field name="name">PS4.2_A4_P2: Validate the change</field>
+            <field name="activity_id" ref="activity_ps4_2_a4"/>
+        </record>
+        <record id="procedure_ps4_2_a4_p3" model="qctracker.procedure.project">
+            <field name="name">PS4.2_A4_P3: Implement the change</field>
+            <field name="activity_id" ref="activity_ps4_2_a4"/>
+        </record>
+
+        <!-- Procedures for PS4.2_A5 -->
+        <record id="procedure_ps4_2_a5_p1" model="qctracker.procedure.project">
+            <field name="name">PS4.2_A5_P1: Make user assistance request</field>
+            <field name="activity_id" ref="activity_ps4_2_a5"/>
+        </record>
+        <record id="procedure_ps4_2_a5_p2" model="qctracker.procedure.project">
+            <field name="name">PS4.2_A5_P2: Assist the user by helpdesk</field>
+            <field name="activity_id" ref="activity_ps4_2_a5"/>
+        </record>
+
+        <!-- Deliverables -->
+        <record id="deliverable_ps4_1_a1_l1" model="qctracker.deliverable.project">
+            <field name="name">PS4.1_A1_L1: IT Asset Register</field>
+            <field name="procedure_id" ref="procedure_ps4_1_a1_p1"/>
+        </record>
+        <record id="deliverable_ps4_1_a2_l2" model="qctracker.deliverable.project">
+            <field name="name">PS4.1_A2_L2: License/subscription requirement form</field>
+            <field name="procedure_id" ref="procedure_ps4_1_a2_p1"/>
+        </record>
+        <record id="deliverable_ps4_1_a2_l3" model="qctracker.deliverable.project">
+            <field name="name">PS4.1_A2_L3: Register of licenses and service subscriptions</field>
+            <field name="procedure_id" ref="procedure_ps4_1_a2_p4"/>
+        </record>
+        <record id="deliverable_ps4_1_a3_l4" model="qctracker.deliverable.project">
+            <field name="name">PS4.1_A3_L4: Installation guide for equipment or software</field>
+            <field name="procedure_id" ref="procedure_ps4_1_a3_p1"/>
+        </record>
+        <record id="deliverable_ps4_1_a3_l5" model="qctracker.deliverable.project">
+            <field name="name">PS4.1_A3_L5: Tool usage sheet</field>
+            <field name="procedure_id" ref="procedure_ps4_1_a4_p1"/>
+        </record>
+        <record id="deliverable_ps4_1_a3_l6" model="qctracker.deliverable.project">
+            <field name="name">PS4.1_A3_L6: Maintenance request</field>
+            <field name="procedure_id" ref="procedure_ps4_1_a5_p1"/>
+        </record>
+        <record id="deliverable_ps4_1_a3_l7" model="qctracker.deliverable.project">
+            <field name="name">PS4.1_A3_L7: Maintenance tracking sheet</field>
+            <field name="procedure_id" ref="procedure_ps4_1_a5_p2"/>
+        </record>
+        <record id="deliverable_ps4_2_a1_l1" model="qctracker.deliverable.project">
+            <field name="name">PS4.2_A1_L1: Rights matrix</field>
+            <field name="procedure_id" ref="procedure_ps4_2_a1_p1"/>
+        </record>
+        <record id="deliverable_ps4_2_a1_l2" model="qctracker.deliverable.project">
+            <field name="name">PS4.2_A1_L2: User profile</field>
+            <field name="procedure_id" ref="procedure_ps4_2_a1_p4"/>
+        </record>
+        <record id="deliverable_ps4_2_a2_l3" model="qctracker.deliverable.project">
+            <field name="name">PS4.2_A2_L3: Maintenance report</field>
+            <field name="procedure_id" ref="procedure_ps4_2_a2_p1"/>
+        </record>
+        <record id="deliverable_ps4_2_a3_l4" model="qctracker.deliverable.project">
+            <field name="name">PS4.2_A3_L4: Specification sheet</field>
+            <field name="procedure_id" ref="procedure_ps4_2_a3_p1"/>
+        </record>
+        <record id="deliverable_ps4_2_a4_l5" model="qctracker.deliverable.project">
+            <field name="name">PS4.2_A4_L5: Request for changes</field>
+            <field name="procedure_id" ref="procedure_ps4_2_a4_p1"/>
+        </record>
+        <record id="deliverable_ps4_2_a5_l6" model="qctracker.deliverable.project">
+            <field name="name">PS4.2_A5_L6: User request sheet</field>
+            <field name="procedure_id" ref="procedure_ps4_2_a5_p1"/>
+        </record>
+
+        <!-- Task Formulations -->
+        <record id="task_formulation_ps4_1_a1_p1" model="qctracker.task_formulation.project">
+            <field name="name">Identify ICT equipment needs and appropriate references to satisfy them</field>
+            <field name="procedure_id" ref="procedure_ps4_1_a1_p1"/>
+        </record>
+        <record id="task_formulation_ps4_1_a1_p2" model="qctracker.task_formulation.project">
+            <field name="name">Validate and transmit the need for ICT equipment</field>
+            <field name="procedure_id" ref="procedure_ps4_1_a1_p2"/>
+        </record>
+        <record id="task_formulation_ps4_1_a1_p3" model="qctracker.task_formulation.project">
+            <field name="name">Acquire ICT equipment</field>
+            <field name="procedure_id" ref="procedure_ps4_1_a1_p3"/>
+        </record>
+        <record id="task_formulation_ps4_1_a1_p4" model="qctracker.task_formulation.project">
+            <field name="name">Provide and monitor IT equipment</field>
+            <field name="procedure_id" ref="procedure_ps4_1_a1_p4"/>
+        </record>
+        <record id="task_formulation_ps4_1_a2_p1" model="qctracker.task_formulation.project">
+            <field name="name">Identify and submit the need for a license or subscription</field>
+            <field name="procedure_id" ref="procedure_ps4_1_a2_p1"/>
+        </record>
+        <record id="task_formulation_ps4_1_a2_p2" model="qctracker.task_formulation.project">
+            <field name="name">Validate and transmit the need for license or subscription</field>
+            <field name="procedure_id" ref="procedure_ps4_1_a2_p2"/>
+        </record>
+        <record id="task_formulation_ps4_1_a2_p3" model="qctracker.task_formulation.project">
+            <field name="name">Complete the subscription or acquisition of the service</field>
+            <field name="procedure_id" ref="procedure_ps4_1_a2_p3"/>
+        </record>
+        <record id="task_formulation_ps4_1_a2_p4" model="qctracker.task_formulation.project">
+            <field name="name">Track licenses and subscriptions</field>
+            <field name="procedure_id" ref="procedure_ps4_1_a2_p4"/>
+        </record>
+        <record id="task_formulation_ps4_1_a3_p1" model="qctracker.task_formulation.project">
+            <field name="name">Install ICT equipment and systems</field>
+            <field name="procedure_id" ref="procedure_ps4_1_a3_p1"/>
+        </record>
+        <record id="task_formulation_ps4_1_a4_p1" model="qctracker.task_formulation.project">
+            <field name="name">Monitor the use of office tools</field>
+            <field name="procedure_id" ref="procedure_ps4_1_a4_p1"/>
+        </record>
+        <record id="task_formulation_ps4_1_a5_p1" model="qctracker.task_formulation.project">
+            <field name="name">Issue a maintenance request</field>
+            <field name="procedure_id" ref="procedure_ps4_1_a5_p1"/>
+        </record>
+        <record id="task_formulation_ps4_1_a5_p2" model="qctracker.task_formulation.project">
+            <field name="name">Perform maintenance</field>
+            <field name="procedure_id" ref="procedure_ps4_1_a5_p2"/>
+        </record>
+        <record id="task_formulation_ps4_2_a1_p1" model="qctracker.task_formulation.project">
+            <field name="name">Create user rights</field>
+            <field name="procedure_id" ref="procedure_ps4_2_a1_p1"/>
+        </record>
+        <record id="task_formulation_ps4_2_a1_p2" model="qctracker.task_formulation.project">
+            <field name="name">Modify user rights</field>
+            <field name="procedure_id" ref="procedure_ps4_2_a1_p2"/>
+        </record>
+        <record id="task_formulation_ps4_2_a1_p3" model="qctracker.task_formulation.project">
+            <field name="name">Delete user rights</field>
+            <field name="procedure_id" ref="procedure_ps4_2_a1_p3"/>
+        </record>
+        <record id="task_formulation_ps4_2_a1_p4" model="qctracker.task_formulation.project">
+            <field name="name">Redact form modification form</field>
+            <field name="procedure_id" ref="procedure_ps4_2_a1_p4"/>
+        </record>
+        <record id="task_formulation_ps4_2_a2_p1" model="qctracker.task_formulation.project">
+            <field name="name">Perform corrective maintenance</field>
+            <field name="procedure_id" ref="procedure_ps4_2_a2_p1"/>
+        </record>
+        <record id="task_formulation_ps4_2_a2_p2" model="qctracker.task_formulation.project">
+            <field name="name">Perform evolutionary maintenance</field>
+            <field name="procedure_id" ref="procedure_ps4_2_a2_p2"/>
+        </record>
+        <record id="task_formulation_ps4_2_a3_p1" model="qctracker.task_formulation.project">
+            <field name="name">Submit a specification request</field>
+            <field name="procedure_id" ref="procedure_ps4_2_a3_p1"/>
+        </record>
+        <record id="task_formulation_ps4_2_a3_p2" model="qctracker.task_formulation.project">
+            <field name="name">Validate the specification</field>
+            <field name="procedure_id" ref="procedure_ps4_2_a3_p2"/>
+        </record>
+        <record id="task_formulation_ps4_2_a4_p1" model="qctracker.task_formulation.project">
+            <field name="name">Make a request for change</field>
+            <field name="procedure_id" ref="procedure_ps4_2_a4_p1"/>
+        </record>
+        <record id="task_formulation_ps4_2_a4_p2" model="qctracker.task_formulation.project">
+            <field name="name">Validate the change</field>
+            <field name="procedure_id" ref="procedure_ps4_2_a4_p2"/>
+        </record>
+        <record id="task_formulation_ps4_2_a4_p3" model="qctracker.task_formulation.project">
+            <field name="name">Implement the change</field>
+            <field name="procedure_id" ref="procedure_ps4_2_a4_p3"/>
+        </record>
+        <record id="task_formulation_ps4_2_a5_p1" model="qctracker.task_formulation.project">
+            <field name="name">Submit user support request</field>
+            <field name="procedure_id" ref="procedure_ps4_2_a5_p1"/>
+        </record>
+        <record id="task_formulation_ps4_2_a5_p2" model="qctracker.task_formulation.project">
+            <field name="name">Assist the user by helpdesk</field>
+            <field name="procedure_id" ref="procedure_ps4_2_a5_p2"/>
+        </record>
+    </data>
+</odoo>

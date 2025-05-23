@@ -6,6 +6,8 @@
             <field name="model">qctracker.project</field>
             <field name="arch" type="xml">
                 <tree decoration-info="status == 'to_do'" decoration-warning="status == 'in_progress'" decoration-success="status == 'done'">
+                    <field name="category_ids" widget="many2many_tags"/>
+                    <field name="category_internal_ids" widget="many2many_tags"/>
                     <field name="name" string="Project Name" widget="badge" decoration-success="1"/>
                     <field name="department_id" string="Department" widget="many2one_button"/>
                     <field name="employee_id" string="Project Manager" widget="many2one_button"/>
@@ -30,9 +32,12 @@
                         </div>
                         <group>
                             <group string="Project Information" style="background-color:#f0f8ff;">
+                               <field name="project_type" />
+                                <field name="category_ids" widget="many2many_tags"/>
+                                <field name="category_internal_ids" widget="many2many_tags"/>
                                 <field name="name" string="Project Name" placeholder="Enter project name" style="color:blue;"/>
                                 <field name="description" string="Description" placeholder="Enter description" style="color:green;"/>
-                                <field name="department_id" string="Department" options="{'no_create_edit': True}" style="color:orange;"/>
+                                <field name="department_id" string="Department"  style="color:orange;"/>
                                 <field name="employee_id" string="Project Manager" options="{'no_create_edit': True}" style="color:purple;"/>
                             </group>
                             <group string="Project Dates &amp; Status" style="background-color:#e6e6fa;">
@@ -66,8 +71,16 @@
             <field name="name">qctracker.project.kanban.styled</field>
             <field name="model">qctracker.project</field>
             <field name="arch" type="xml">
+
                 <kanban default_group_by="status">
                     <field name="id" invisible="1"/>
+                     <field name="name"/>
+                    <field name="employee_id"/>
+                    <field name="end_date"/>
+                    <field name="progress"/>
+                    <field name="status"/>
+                    <field name="category_ids"/>
+                    <field name="category_internal_ids" widget="many2many_tags"/>
                     <templates>
                         <t t-name="kanban-box">
                             <div class="oe_kanban_global_click" style="border: 2px solid #ddd; padding: 10px; margin: 5px; border-radius: 5px; background-color: #f9f9f9; box-shadow: 2px 2px 5px #ccc;">
@@ -87,6 +100,11 @@
                                         <li style="margin-bottom: 5px;">
                                             <i class="fa fa-tasks" style="color: #000080;"></i> Progress: <field name="progress" style="color: #000080;"/>
                                         </li>
+
+                                        <li style="margin-bottom: 5px;">
+                                            <i class="fa fa-tags" style="color: #ff4500;"></i> Categories:
+                                            <field name="category_ids" widget="many2many_tags" style="color: #ff4500;"/>
+                                        </li>
                                     </ul>
                                 </div>
                             </div>
@@ -95,6 +113,29 @@
                 </kanban>
             </field>
         </record>
+
+        <record id="qctracker_project_search_view" model="ir.ui.view">
+    <field name="name">qctracker.project.search</field>
+    <field name="model">qctracker.project</field>
+    <field name="arch" type="xml">
+        <search string="Projects">
+            <field name="name"/>
+            <field name="department_id"/>
+            <field name="employee_id"/>
+            <field name="status"/>
+            <field name="category_ids"/>
+            <field name="category_internal_ids" widget="many2many_tags"/>
+            <filter string="To Do" name="to_do" domain="[('status', '=', 'to_do')]"/>
+            <filter string="In Progress" name="in_progress" domain="[('status', '=', 'in_progress')]"/>
+            <filter string="Completed" name="done" domain="[('status', '=', 'done')]"/>
+            <group expand="0" string="Group By">
+                <filter name="status" string="Status" context="{'group_by': 'status'}"/>
+                <filter name="department" string="Department" context="{'group_by': 'department_id'}"/>
+                <filter name="category" string="Category" context="{'group_by': 'category_ids'}"/>
+            </group>
+        </search>
+    </field>
+</record>
 
         <record id="qctracker_project_view_graph" model="ir.ui.view">
             <field name="name">qctracker.project.graph.styled</field>

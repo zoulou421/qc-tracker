@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <!-- Domain -->
+        <record id="domain_support" model="qctracker.domain.project">
+            <field name="name">PS: SUPPORT</field>
+        </record>
+
+        <!-- Process -->
+        <record id="process_ps4" model="qctracker.process.project">
+            <field name="name">PS4. Information system management</field>
+            <field name="domain_id" ref="domain_support"/>
+        </record>
+
+        <!-- Sub Process -->
+        <record id="sub_process_ps4_1" model="qctracker.sub_process.project">
+            <field name="name">PS4.1: Manage IT and office equipment</field>
+            <field name="process_id" ref="process_ps4"/>
+        </record>
+
+        <!-- Activity -->
+        <record id="activity_ps4_1_a1" model="qctracker.activity.project">
+            <field name="name">PS4.1_A1: Manage IT equipment inputs/outputs</field>
+            <field name="sub_process_id" ref="sub_process_ps4_1"/>
+        </record>
+
+        <!-- Procedure -->
+        <record id="procedure_ps4_1_a1" model="qctracker.procedure.project">
+            <field name="name">PS4.1_A1_P1: Identify ICT equipment needs and appropriate references to meet them</field>
+            <field name="activity_id" ref="activity_ps4_1_a1"/>
+        </record>
+
+        <!-- Deliverable -->
+        <record id="deliverable_ps4_1_a1_l1" model="qctracker.deliverable.project">
+            <field name="name">PS4.1_A1_L1: IT Asset Register</field>
+            <field name="procedure_id" ref="procedure_ps4_1_a1"/>
+        </record>
+
+        <!-- Task Formulation -->
+        <record id="task_formulation_ps4_1_a1_p1" model="qctracker.task_formulation.project">
+            <field name="name">Identify ICT equipment needs and appropriate references to satisfy them</field>
+            <field name="procedure_id" ref="procedure_ps4_1_a1"/>
+        </record>
+    </data>
+</odoo>

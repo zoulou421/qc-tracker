@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <record id="qctracker_process_view_tree" model="ir.ui.view">
+        <field name="name">qctracker.process.tree</field>
+        <field name="model">qctracker.process</field>
+        <field name="arch" type="xml">
+            <tree class="qctracker-process-tree">
+                <field name="name" />
+            </tree>
+        </field>
+    </record>
+
+    <record id="qctracker_process_view_form" model="ir.ui.view">
+        <field name="name">qctracker.process.form</field>
+        <field name="model">qctracker.process</field>
+        <field name="arch" type="xml">
+            <form class="qctracker-process-form">
+                <sheet>
+                    <group>
+                        <field name="name" class="animated pulse" />
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+</odoo>

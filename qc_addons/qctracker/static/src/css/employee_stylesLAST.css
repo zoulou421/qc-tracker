@@ -1,0 +1,170 @@
+/* Professional color palette */
+:root {
+    --primary: #007bff;
+    --secondary: #6c757d;
+    --success: #28a745;
+    --warning: #ffc107;
+    --danger: #dc3545;
+    --light: #f8f9fa;
+    --gradient-light: linear-gradient(135deg, #f0f8ff, #e6e6fa);
+    --menu-hover: #e9ecef;
+    --menu-active: #0056b3;
+}
+
+/* Menu Styling */
+.o_menu_sections {
+    transition: all 0.3s ease;
+    padding: 10px 0;
+}
+
+/* Menu Items */
+.o_menu_sections .o_menu_entry {
+    position: relative;
+    padding: 8px 15px;
+    border-radius: 5px;
+    transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
+}
+
+/* Hover Effect */
+.o_menu_sections .o_menu_entry:hover {
+    background-color: var(--menu-hover);
+    transform: scale(1.05);
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+/* Active/Selected Menu Item */
+.o_menu_sections .o_menu_entry.active {
+    background-color: var(--menu-active);
+    color: white;
+}
+
+/* Submenu Styling */
+.o_menu_sections .dropdown-menu {
+    border: none;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+    background: var(--light);
+    animation: slideDown 0.3s ease;
+}
+
+/* Submenu Items */
+.o_menu_sections .dropdown-menu .o_menu_entry {
+    padding: 6px 20px;
+    transition: background-color 0.3s ease, padding-left 0.3s ease;
+}
+
+.o_menu_sections .dropdown-menu .o_menu_entry:hover {
+    background-color: var(--menu-hover);
+    padding-left: 25px;
+}
+
+/* Emoji Alignment */
+.o_menu_sections .o_menu_entry span {
+    display: inline-flex;
+    align-items: center;
+}
+
+/* Custom Animation for Submenu */
+@keyframes slideDown {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Tree View Styling */
+.qctracker-employee-tree tr:hover {
+    background-color: var(--light);
+    transition: background-color 0.3s ease;
+}
+
+.qctracker-employee-tree .badge {
+    transition: transform 0.2s ease;
+}
+
+.qctracker-employee-tree .badge:hover {
+    transform: scale(1.1);
+}
+
+/* Form View Styling */
+.qctracker-employee-form .card {
+    border: none;
+    border-radius: 10px;
+    background: var(--gradient-light);
+}
+
+.qctracker-employee-form .form-control {
+    border-radius: 5px;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.qctracker-employee-form .form-control:focus {
+    border-color: var(--primary);
+    box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+    animation: pulse 1s infinite;
+}
+
+.qctracker-employee-form .o_notebook .nav-tabs .nav-link {
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.qctracker-employee-form .nav-tabs .nav-link:hover,
+.qctracker-employee-form .nav-tabs .nav-link.active {
+    background-color: var(--primary);
+    color: white;
+    border-radius: 5px;
+}
+
+/* Adjust form header image spacing */
+.qctracker-employee-form .oe_title .rounded-circle {
+    margin-right: 15px;
+}
+
+/* Kanban View Styling */
+.qctracker-kanban-card {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.qctracker-kanban-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+}
+
+.qctracker-kanban-card .card-header {
+    padding: 15px;
+}
+
+.qctracker-kanban-card .card-body {
+    padding: 10px;
+}
+
+/* Animations */
+@keyframes pulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.05); }
+    100% { transform: scale(1); }
+}
+
+/* Responsive Menu */
+@media (max-width: 768px) {
+    .o_menu_sections .o_menu_entry {
+        padding: 6px 10px;
+        font-size: 14px;
+    }
+    .o_menu_sections .dropdown-menu {
+        width: 100%;
+        animation: none; /* Disable slide for mobile */
+    }
+    .qctracker-employee-form .oe_title {
+        flex-direction: column;
+        text-align: center;
+    }
+    .qctracker-employee-form .oe_title .rounded-circle {
+        margin-right: 0;
+        margin-bottom: 10px;
+    }
+}
